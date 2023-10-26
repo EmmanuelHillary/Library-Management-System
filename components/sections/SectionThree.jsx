@@ -10,7 +10,7 @@ const SectionThree = () => {
     setActiveTab(tab);
   };
   return (
-    <div className="px-16 flex items-center justify-between py-24 border-t-4 border-[#EAAA00] relative">
+    <div className="px-16 flex items-center justify-between py-24 border-t-4 border-[#971713] relative">
          <Image src={BgDesign} alt="bgdesign" className="absolute right-[30px] top-0"/>
       <div>
         <Image src={SectionImg} alt="sectionTHREEimg" />
@@ -20,24 +20,24 @@ const SectionThree = () => {
           <div className="flex">
             <div
               className={`cursor-pointer mr-8  ${
-                activeTab === "about" ? "border-b-2 border-yellow-500" : ""
+                activeTab === "about" ? "border-b-2 border-[#971713]" : ""
               }`}
               onClick={() => handleTabChange("about")}
             >
-              <h2 className="text-[34px] font-semibold">About</h2>
+              <h2 className="text-[34px] font-semibold font-outfit">About</h2>
             </div>
             <div
               className={`cursor-pointer ${
-                activeTab === "terms" ? "border-b-2 border-yellow-500" : ""
+                activeTab === "terms" ? "border-b-2 border-[#971713]" : ""
               }`}
               onClick={() => handleTabChange("terms")}
             >
-              <h2 className="text-[34px]  font-semibold">Terms/Conditions</h2>
+              <h2 className="text-[34px]  font-semibold font-outfit">Terms/Conditions</h2>
             </div>
           </div>
           <div className="mt-4 w-[600px]">
             {activeTab === "about" ? (
-              <p className="text-[22px] text-center">
+              <p className="text-[22px] text-center font-outfit">
                 Lorem ipsum dolor sit amet consectetur. Risus dapibus quam
                 elementum nunc. Ultrices purus enim bibendum libero. Ut nibh
                 quis sem augue vitae id. Tellus viverra enim est metus
@@ -45,7 +45,7 @@ const SectionThree = () => {
                 tristique vel in.
               </p>
             ) : (
-              <p className="text-[22px] text-center">
+              <p className="text-[22px] text-center font-outfit">
                 Lorem ipsum dolor sit amet consectetur. Risus dapibus quam
                 elementum nunc. Ultrices purus enim bibendum libero. Ut nibh
                 quis sem augue vitae id. Tellus viverra enim est metus
@@ -54,11 +54,11 @@ const SectionThree = () => {
               </p>
             )}
           </div>
-          <div className="text-white mt-12 text-[30px] flex gap-8 items-center font-semibold">
-            <button className="border-4 border-[#EAAA00] bg-[#EAAA00] shadow-2xl px-6 py-2 rounded-3xl hover:bg-transparent hover:text-[#EAAA00]">
+          <div className="text-white mt-12 text-[16px] flex gap-8 items-center font-semibold">
+            <button className="border-4 border-[#971713] font-outfit bg-[#971713] shadow-2xl px-12 py-2  hover:bg-transparent hover:text-[#971713]">
               Create Shelf
             </button>
-            <button className="border-4 border-[#D9D9D9]  px-6 py-2 rounded-3xl shadow-2xl hover:bg-transparent bg-[#D9D9D9] text-black">
+            <button className="border-4 border-[#D9D9D9] font-outfit  px-12 py-2  shadow-2xl hover:bg-transparent bg-[#D9D9D9] text-black">
               Sign up
             </button>
           </div>
