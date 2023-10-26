@@ -6,28 +6,28 @@ import SectionImg from "../../public/sectiontwo.png";
 
 const data = [
   {
-    background: "#582C83",
+    background: "white",
     imagePath: "books.png",
     headerText: "120+ Million resourses",
     bodyText:
       "Lorem ipsum dolor sit amet consectetur. Nec tincidunt lacus malesuada felis venenatis donec. Pellentesque lorem faucibus egestas volutpat mauris porta viverra. Aliquet purus ornare rhoncus proin tellus faucibus pellentesque iaculis ut. Eget mi vel blandit eu tellus purus id laoreet vel.",
   },
   {
-    background: "#836898",
+    background: "white",
     imagePath: "docs.png",
     headerText: "Various Formats",
     bodyText:
       "Lorem ipsum dolor sit amet consectetur. Nec tincidunt lacus malesuada felis venenatis donec. Pellentesque lorem faucibus egestas volutpat mauris porta viverra. Aliquet purus ornare rhoncus proin tellus faucibus pellentesque iaculis ut. Eget mi vel blandit eu tellus purus id laoreet vel.",
   },
   {
-    background: "#FEE9FF",
+    background: "white",
     imagePath: "thumbs.png",
     headerText: "Best Quality",
     bodyText:
       "Lorem ipsum dolor sit amet consectetur. Nec tincidunt lacus malesuada felis venenatis donec. Pellentesque lorem faucibus egestas volutpat mauris porta viverra. Aliquet purus ornare rhoncus proin tellus faucibus pellentesque iaculis ut. Eget mi vel blandit eu tellus purus id laoreet vel.",
   },
   {
-    background: "#00C9AE",
+    background: "white",
     imagePath: "lightning.png",
     headerText: "Quick Delivery",
     bodyText:
@@ -45,11 +45,11 @@ const SectionTwo = () => {
       className="px-16 py-8"
     >
       <div>
-        <h3 className="text-[20px] font-bold flex items-center">
+        <h3 className="text-[20px] font-bold flex items-center font-outfit">
           Features <Image src={Jigsaw} alt="jigsaw" />
         </h3>
-        <h1 className="text-[40px] font-bold">Explore E-Libary’s</h1>
-        <h1 className="text-[40px] font-bold">Unlimited Possibilities</h1>
+        <h1 className="text-[40px] font-bold font-outfit">Explore E-Libary’s</h1>
+        <h1 className="text-[40px] font-bold font-outfit">Unlimited Possibilities</h1>
       </div>
       <div className="flex justify-between items-center mt-8">
         {data.map((card, index) => {
