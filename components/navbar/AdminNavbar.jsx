@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import profile from "../../public/user.png";
 import Image from "next/image";
 
 const AdminNavbar = ({ toggleSidebar, title }) => {
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    // Get item from local storage
+    const storedName = localStorage.getItem("name");
+
+    // Update the state with the retrieved name
+    if (storedName) {
+      setName(storedName);
+    }
+  }, []);
   return (
     <div className="flex justify-between items-center bg-white shadow-custom p-4">
       <div className="flex items-center">
@@ -24,9 +35,11 @@ const AdminNavbar = ({ toggleSidebar, title }) => {
         />
         <div className="flex flex-col text-center">
           <span className="text-gray-700 font-semibold text-left font-outfit">
-            user name
+            {name}
           </span>
-          <span className="text-sm text-gray-500 text-left font-outfit">role</span>
+          <span className="text-sm text-gray-500 text-left font-outfit">
+            Administrator
+          </span>
         </div>
       </div>
     </div>

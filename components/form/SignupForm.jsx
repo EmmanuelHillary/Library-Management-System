@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import axios from "axios";
 
 const SignupForm = () => {
   const [regData, setRegData] = useState({
-    firstName: "",
-    lastName: "",
+    username: "",
     email: "",
     password: "",
     repeat_password: "",
     remember_me: false,
   });
+  const [loading, setLoading] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,13 +20,13 @@ const SignupForm = () => {
   };
 
   const handleCheckboxChange = (e) => {
-    const { name, checked } = e.target;
-    setRegData({ ...regData, [name]: checked });
+    const { checked } = e.target;
+    setRememberMe(checked);
   };
   // //   const [isOpen, setIsOpen] = useState(false);
   // //   const [categories, setCategories] = useState([]);
   // //   const [error, setError] = useState("");
-  // //   const [loading, setLoading] = useState(false);
+  // //
 
   // //   const handleSubmit = (e) => {
   // //     e.preventDefault();
@@ -52,47 +55,60 @@ const SignupForm = () => {
   // //       });
   // //   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (regData.password !== regData.repeat_password) {
+      setError("Passwords do not match");
+      return;
+    }
+    setLoading(true);
+    const signupUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/users/usersignup`;
+    axios
+      .post(signupUrl, regData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        alert("User Created, Log in");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
   return (
     <div
-      className="py-8 md:py-20 p-8 md:p-20 w-full relative shadow-3xl rounded-[50px]"
+      className="py-8 md:py-20 p-8 md:p-20 relative shadow-3xl rounded-[50px] w-[700px]"
       style={{
         background:
           "linear-gradient(rgba(52, 52, 52, 1), rgba(255, 255, 255, 0))",
       }}
     >
-      <form>
-        <h1 className="text-[48px] text-center font-bold hidden md:block font-clash relative text-white">
+      <form onSubmit={handleSubmit}>
+        <h1 className="text-[48px] text-center font-bold hidden md:block font-outfit relative text-white">
           Sign Up
         </h1>
-        <h1 className="text-[20px] md:text-[24px] pt-4 pb-8 text-center relative text-white">
+        <h1 className="text-[20px] md:text-[24px] pt-4 pb-8 text-center relative text-white font-outfit">
           Already have an account?{" "}
-          <Link href="#" className="text-[#971713]">
+          <Link href={"/authentication/Login"} className="text-[#971713]">
             Log in
           </Link>
         </h1>
-        <div className="py-2 text-[13px] md:text-[14px] flex flex-row justify-between w-full items-center gap-8">
-          <div className=" flex flex-col items-start">
+        <div className="py-2 text-[13px] md:text-[14px] flex md:flex-row flex-col justify-between items-center gap-2 md:gap-8">
+          <div className="flex flex-col items-start relative w-full z-10">
             <input
               type="text"
-              id="first_name"
-              name="first_name"
-              value={regData.firstName}
+              id="username"
+              name="username"
+              value={regData.username}
               onChange={handleChange}
-              className=" p-4  pl-6  mt-4 w-full md:w-[263px] text-white text-[20px] rounded-3xl bg-[#5A5A5A]"
+              className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A] font-outfit"
               required
-              placeholder="First Name"
-            />
-          </div>
-          <div className=" flex flex-col items-start">
-            <input
-              type="text"
-              id="last_name"
-              name="last_name"
-              value={regData.lastName}
-              onChange={handleChange}
-              className="p-4  pl-6  mt-4 w-full md:w-[263px] text-white text-[20px] rounded-3xl bg-[#5A5A5A]"
-              required
-              placeholder="Last Name"
+              placeholder="Enter your username"
             />
           </div>
         </div>
@@ -104,7 +120,7 @@ const SignupForm = () => {
               name="email"
               value={regData.email}
               onChange={handleChange}
-              className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A]"
+              className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A] font-outfit"
               required
               placeholder="Enter your Email Address"
             />
@@ -118,7 +134,7 @@ const SignupForm = () => {
               name="password"
               value={regData.password}
               onChange={handleChange}
-              className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A]"
+              className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A] font-outfit"
               required
               placeholder="Enter your Password"
             />
@@ -132,7 +148,7 @@ const SignupForm = () => {
               name="repeat_password"
               value={regData.repeat_password}
               onChange={handleChange}
-              className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A]"
+              className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A] font-outfit"
               required
               placeholder="Confirm your password"
             />
@@ -150,27 +166,27 @@ const SignupForm = () => {
                   onChange={handleCheckboxChange}
                 />
                 <span className="checkbox-icon"></span>
-                <div className=" text-[20px]">Remember me?</div>
+                <div className=" text-[20px] font-outfit">Remember me?</div>
               </label>
             </div>
             <div>
-              <Link className="text-[20px] text-[#971713]" href="#">
+              <Link className="text-[20px] text-[#971713] font-outfit" href="#">
                 Forgot Password?
               </Link>
             </div>
           </div>
 
           <div className="flex justify-center border-transparent w-full mt-12 relative z-10">
-            <button className="border-4 border-[#971713] bg-[#971713] px-12 py-2 rounded-[50px] hover:bg-transparent text-[32px]">
+            <button className="border-4 font-outfit border-[#971713] bg-[#971713] px-12 py-2 rounded-[50px] hover:bg-transparent text-[32px]">
               Get Started
             </button>
           </div>
         </div>
-        {/* {error && (
+        {error && (
           <div className="text-white text-[13px] font-mont border-2 border-[#150E28] p-2 my-2 bg-red-500">
             {error}
           </div>
-        )} */}
+        )}
       </form>
     </div>
   );

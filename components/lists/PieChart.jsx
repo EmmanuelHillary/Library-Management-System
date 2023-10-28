@@ -1,15 +1,52 @@
 import { Pie } from "react-chartjs-2";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Chart, ArcElement } from "chart.js";
 Chart.register(ArcElement);
 
 const PieChart = () => {
+  const [totalBooks, setTotalBooks] = useState(0);
+  const [totalOverBooks, setTotalOverBooks] = useState(0);
+  const [returnedBooks, setReturnedBooks] = useState(0);
+
+  useEffect(() => {
+    const fetchTotalBooks = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/books/gettotalbookvalue/books`
+        );
+        setTotalBooks(response.data);
+      } catch (error) {
+        console.error("Error fetching total books:", error);
+      }
+    };
+
+    const fetchTotalOverdueBooks = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/books/gettotaloverduebookvalue/books`
+        );
+        setTotalOverBooks(response.data);
+      } catch (error) {
+        console.error("Error fetching total overdue books:", error);
+      }
+    };
+
+    fetchTotalBooks();
+    fetchTotalOverdueBooks();
+  }, []);
+
+  useEffect(() => {
+    // Calculate the number of returned books based on the available data
+    setReturnedBooks(totalBooks - totalOverBooks);
+  }, [totalBooks, totalOverBooks]);
+
   const data = {
     labels: ["Returned books", "Overdue books"],
     datasets: [
       {
-        data: [30, 70], // Example values, you can replace these with your own data
-        backgroundColor: ["#EAAA00", "#971713"], // Example colors, you can customize these as needed
+        data: [totalOverBooks, returnedBooks ],
+        backgroundColor: ["#EAAA00", "#971713"],
         hoverBackgroundColor: ["#EAAA00", "#971713"],
       },
     ],
@@ -30,16 +67,16 @@ const PieChart = () => {
           flexDirection: "column",
           alignItems: "center",
           position: "relative",
-          bottom: "30px"
+          bottom: "30px",
         }}
       >
         <h2 className="text-[25px] font-outfit">Total Books</h2>
-        <Pie  data={data} />
+        <Pie data={data} />
         <div
           style={{
             display: "flex",
             justifyContent: "center",
-            width: "200%"
+            width: "200%",
           }}
         >
           {legendData.map((item, index) => (
@@ -49,7 +86,6 @@ const PieChart = () => {
                 display: "flex",
                 alignItems: "center",
                 marginRight: "20px",
-                
               }}
             >
               <div

@@ -6,7 +6,7 @@ import RibbonButton from "../button/Ribbon-button";
 
 const Navbar = () => {
   return (
-    <div className=" flex justify-between items-center py-6 px-16 shadow-2xl z-50 w-full">
+    <div className=" flex justify-between bg-white items-center py-6 px-16 shadow-2xl z-50 w-full">
       <div>
         <Image src={Logo} alt="logo" width={240} height={50}/>
       </div>
@@ -14,8 +14,8 @@ const Navbar = () => {
         <Link href="#">Home</Link>
         <Link href="#">About</Link>
         <Link href="#">Catalog</Link>
-        <Link href="#" className="text-[#971713] bg-[#FFECEC] py-2 px-4">Admin</Link>
-        <Link href="#"  className="text-white bg-[#971713] py-2 px-4">Login</Link>
+        <Link href={"/authentication/Admin"} className="text-[#971713] bg-[#FFECEC] py-2 px-4">Admin</Link>
+        <Link href={"/authentication/Login"}  className="text-white bg-[#971713] py-2 px-4">Login</Link>
       </div>
     </div>
   );

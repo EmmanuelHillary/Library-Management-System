@@ -3,7 +3,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import LoginForm from "@/components/form/LoginForm";
 
-const AdminLogin = () => {
+const Admin = () => {
   return (
     <div>
       <div
@@ -30,4 +30,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default Admin;
