@@ -41,6 +41,8 @@ const SmallUserList = ({ title, users }) => {
             <tr className="bg-gray-100">
               <th className="p-2">User ID</th>
               <th className="p-2">User Name</th>
+              <th className="p-2">Email</th>
+              
               <th className="p-2">Department</th>
             </tr>
           </thead>
@@ -49,12 +51,14 @@ const SmallUserList = ({ title, users }) => {
               <tr key={index} className="border-b border-gray-200">
                 <td className="p-2 text-center">{user._id}</td>
                 <td className="p-2 text-center">{user.username}</td>
+                <td className="p-2 text-center">{user.email}</td>
                 <td className="p-2 text-center">{user.department}</td>
               </tr>
             ))}
           </tbody>
           <tfoot>
             <tr className="bg-gray-100">
+              <td className="p-2" colSpan="2"></td>
               <td className="p-2" colSpan="2"></td>
               <td className="p-2 text-right text-[#971713] text-[14px] font-bold">
                 See All

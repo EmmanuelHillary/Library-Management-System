@@ -42,6 +42,8 @@ const OverdueList = ({ title, users }) => {
     },
   ];
 
+
+  
   const [bookList, setBookList] = useState([]);
 
   useEffect(() => {
@@ -68,11 +70,12 @@ const OverdueList = ({ title, users }) => {
             Book List Status
           </caption>
           <thead>
-            <tr className="bg-gray-100">
+            <tr colSpan="7" className="bg-gray-100">
               <th className="p-2">Book ID</th>
               <th className="p-2">Books Issued</th>
               <th className="p-2">Title</th>
               <th className="p-2">Author</th>
+              <th className="p-2">Borrow Date</th>
               <th className="p-2">Overdue Date</th>
               <th className="p-2">Status</th>
             </tr>
@@ -84,6 +87,7 @@ const OverdueList = ({ title, users }) => {
                 <td className="p-2 text-center">{user.total}</td>
                 <td className="p-2 text-center">{user.title}</td>
                 <td className="p-2 text-center">{user.author}</td>
+                <td className="p-2 text-center">{user.borrowDate}</td>
                 <td className="p-2 text-center">{user.returnDate}</td>
                 <td className="p-2 text-center">{user.returned === true ? "Returned" : "Not returned"}</td>
               </tr>
@@ -91,7 +95,7 @@ const OverdueList = ({ title, users }) => {
           </tbody>
           <tfoot>
             <tr className="bg-gray-100">
-              <td className="p-2" colSpan="5"></td>
+              <td className="p-2" colSpan="7"></td>
               <td className="p-2 text-right text-[#971713] text-[14px] font-bold">
                 See All
               </td>

@@ -16,15 +16,15 @@ import PieChart from "@/components/lists/PieChart";
 import Footer from "@/components/footer/Footer";
 
 const Book = [
-  { title: "Book Title", desc: "Book Description", picture: Dummy },
-  { title: "Book Title", desc: "Book Description", picture: Dummy },
-  { title: "Book Title", desc: "Book Description", picture: Dummy },
-  { title: "Book Title", desc: "Book Description", picture: Dummy },
-  { title: "Book Title", desc: "Book Description", picture: Dummy },
-  { title: "Book Title", desc: "Book Description", picture: Dummy },
-  { title: "Book Title", desc: "Book Description", picture: Dummy },
-  { title: "Book Title", desc: "Book Description", picture: Dummy },
-  { title: "Book Title", desc: "Book Description", picture: Dummy },
+  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
+  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
+  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
+  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
+  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
+  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
+  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
+  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
+  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
 ];
 
 const Dashboard = () => {
@@ -32,6 +32,7 @@ const Dashboard = () => {
   const [totalBooks, setTotalBooks] = useState(0);
   const [totalBorrowedBooks, setTotalBorrowedBooks] = useState(0);
   const [totalOverBooks, setTotalOverBooks] = useState(0);
+  const [books, setBooks] = useState([]);
 
   const [name, setName] = useState("");
 
@@ -69,6 +70,17 @@ const Dashboard = () => {
       }
     };
 
+    const fetchBooks = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/books/getallbooks`
+        );
+        setBooks(response.data);
+      } catch (error) {
+        console.error("Error fetching books:", error);
+      }
+    };
+
     const fetchTotalBorrowedBooks = async () => {
       try {
         const response = await axios.get(
@@ -95,6 +107,8 @@ const Dashboard = () => {
     fetchTotalBorrowedBooks();
     fetchTotalBooks();
     fetchTotalUsers();
+    fetchBooks();
+
   }, []);
 
   const cardData = [
@@ -147,15 +161,15 @@ const Dashboard = () => {
         <div className="">
           <h1 className="py-8 text-[28px] font-outfit">Top Choices</h1>
           <div className="flex flex-row justify-between overflow-x-scroll w-full">
-            {Book.map((book, index) => {
+            {books.map((book, index) => {
               return (
                 <div className="min-w-[176px] mr-12">
-                  <Image src={book.picture} alt="book picture" width={176} />
+                  <Image loader={() => book.imageUrl} src={book.imageUrl} alt="book imageUrl" width={176} height={100} />
                   <h1 className="text-[18px] font-outfit text-center">
                     {book.title}
                   </h1>
                   <h1 className="text-[16px] text-[#9B9B9B] text-center font-outfit">
-                    {book.desc}
+                    {book.department}
                   </h1>
                 </div>
               );
