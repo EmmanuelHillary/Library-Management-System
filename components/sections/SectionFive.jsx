@@ -24,7 +24,7 @@ const SectionFive = () => {
           Hardcopies or soft copies?
         </h1>
         <p className="text-lg md:text-[22px] w-full md:w-[600px] my-8 font-outfit">
-        An eLibrary, short for "electronic library," is a digital platform or repository that provides access to a wide range of digital resources, including ebooks, audiobooks, academic journals, magazines, and other digital materials. 
+        An eLibrary, short for electronic library, is a digital platform or repository that provides access to a wide range of digital resources, including ebooks, audiobooks, academic journals, magazines, and other digital materials. 
         </p>
       </div>
     </div>
