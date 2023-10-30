@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Eye from "../../public/eye.png";
+import Image from "next/image";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -12,6 +14,7 @@ const LoginForm = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -83,9 +86,9 @@ const LoginForm = () => {
           </div>
         </div>
         <div className="py-2 text-[13px] md:text-[14px] flex md:flex-row flex-col justify-between items-center gap-2 md:gap-8">
-          <div className="flex flex-col items-start relative w-full z-10">
+          <div className="flex items-start relative w-full z-10 ">
             <input
-              type="text"
+              type={showPassword ? "text" : "password"}
               id="password"
               name="password"
               value={loginData.password}
@@ -93,6 +96,13 @@ const LoginForm = () => {
               className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A] font-outfit"
               required
               placeholder="Enter your Password"
+            />
+
+            <Image
+              src={Eye}
+              alt="Profile"
+              className="w-15 h-15 rounded-full mr-2 absolute top-8 right-4  "
+              onClick={() => setShowPassword((prevState) => !prevState)}
             />
           </div>
         </div>

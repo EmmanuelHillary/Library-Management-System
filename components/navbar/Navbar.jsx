@@ -6,7 +6,7 @@ import RibbonButton from "../button/Ribbon-button";
 
 const Navbar = () => {
   return (
-    <div className=" flex justify-between bg-white items-center py-6 px-16 shadow-2xl z-50 w-full">
+    <div className=" fixed top-0 flex justify-between bg-white items-center py-6 px-16 shadow-2xl z-50 w-full">
       <div>
         <Image src={Logo} alt="logo" width={240} height={50}/>
       </div>

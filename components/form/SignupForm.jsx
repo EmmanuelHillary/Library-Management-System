@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
+import Eye from "../../public/eye.png";
+import Image from "next/image";
+
 
 const SignupForm = () => {
   const [regData, setRegData] = useState({
@@ -13,6 +16,7 @@ const SignupForm = () => {
   const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -129,7 +133,7 @@ const SignupForm = () => {
         <div className="py-2 text-[13px] md:text-[14px] flex md:flex-row flex-col justify-between items-center gap-2 md:gap-8">
           <div className="flex flex-col items-start relative w-full z-10">
             <input
-              type="text"
+              type={showPassword ? "text" : "password"}
               id="password"
               name="password"
               value={regData.password}
@@ -138,12 +142,18 @@ const SignupForm = () => {
               required
               placeholder="Enter your Password"
             />
+            <Image
+              src={Eye}
+              alt="Profile"
+              className="w-15 h-15 rounded-full mr-2 absolute top-8 right-4  "
+              onClick={() => setShowPassword((prevState) => !prevState)}
+            />
           </div>
         </div>
         <div className="py-2 text-[13px] md:text-[14px] flex md:flex-row flex-col justify-between items-center gap-2 md:gap-8">
           <div className="flex flex-col items-start relative w-full z-10">
             <input
-              type="text"
+              type={showPassword ? "text" : "password"}
               id="repeat_password"
               name="repeat_password"
               value={regData.repeat_password}
@@ -151,6 +161,12 @@ const SignupForm = () => {
               className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A] font-outfit"
               required
               placeholder="Confirm your password"
+            />
+            <Image
+              src={Eye}
+              alt="Profile"
+              className="w-15 h-15 rounded-full mr-2 absolute top-8 right-4  "
+              onClick={() => setShowPassword((prevState) => !prevState)}
             />
           </div>
         </div>
