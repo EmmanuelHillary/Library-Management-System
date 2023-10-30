@@ -69,6 +69,7 @@ const TotalList = ({ title, users }) => {
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
                     }}
+                    key={index}
                   >
                     <div>
                       <Image
