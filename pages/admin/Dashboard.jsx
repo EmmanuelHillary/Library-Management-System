@@ -136,14 +136,14 @@ const Dashboard = () => {
 
   return (
     <AdminLayout title="Dashboard">
-      <div className=" p-0 sm:p-4">
+      <div className=" p-8 sm:p-4">
         <div>
           <h1 className="text-[32px] font-bold">
             Hello <span className="text-[#971713] font-outfit">{name}</span>
           </h1>
           <h3 className="text-[20px] font-bold font-outfit">Date | Time</h3>
         </div>
-        <div className="flex gap-[52px] w-full overflow-x-scroll">
+        <div className="flex flex-col md:flex-row gap-[52px] w-full overflow-x-scroll">
           {cardData.map((card, index) => {
             return (
               <DashboardCard
@@ -154,7 +154,7 @@ const Dashboard = () => {
             );
           })}
         </div>
-        <div className="flex flex-row gap-12 overflow-x-scroll w-full">
+        <div className="flex flex-col md:flex-row gap-12 overflow-x-scroll w-full">
           <SmallUserList />
           <SmallBookList />
         </div>
@@ -179,7 +179,7 @@ const Dashboard = () => {
         <div>
           <OverdueList />
         </div>
-        <div className="flex flex-row gap-12 overflow-x-scroll w-full">
+        <div className="flex flex-col md:flex-row gap-12 overflow-x-scroll w-full">
           <div style={{ flex: 1 }}>
             <IssueList />
           </div>

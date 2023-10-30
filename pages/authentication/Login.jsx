@@ -15,7 +15,7 @@ const Login = () => {
         <Navbar />
         <div>
           <div className="bg-transparent relative overflow-hidden">
-            <div className=" text-white flex xl:flex-row flex-col items-center gap-8 justify-between p-auto px-12 md:px-20">
+            <div className=" text-white flex xl:flex-row flex-col items-center gap-8 justify-between px-0 md:px-20">
               <div>
                 <h1 className="text-[20px] mb-12 md:text-[60px] w-[500px] text-center font-bold relative block">
                   WHAT WILL YOU READ TODAY ?
@@ -25,7 +25,7 @@ const Login = () => {
                   you are.
                 </p>
               </div>
-              <div className="relative">
+              <div className="relative mt-12">
                 <div>
                   <LoginForm />
                 </div>
