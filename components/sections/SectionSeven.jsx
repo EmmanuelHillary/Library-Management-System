@@ -5,8 +5,8 @@ const SectionSeven = () => {
   return (
     <div className="px-16 py-8 flex flex-col justify-center items-center overflow-hidden">
       <div>
-        <h1 className="text-center text-[34px] font-bold">MOST POPULAR</h1>
-        <p className="text-center text-[32px] w-[800px]">
+        <h1 className="text-center text-lg md:text-[34px] font-bold font-outfit">MOST POPULAR</h1>
+        <p className="text-center text-lg md:text-[32px] font-outfit w-full md:w-[800px]">
           Browse the collection of our most popular books, you will definitely find what you are looking for
         </p>
       </div>

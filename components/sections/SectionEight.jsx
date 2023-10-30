@@ -6,8 +6,8 @@ const SectionEight = () => {
   return (
     <div className="flex items-center justify-center gap-12 px-16 py-8">
       <div>
-        <h1 className="text-[40px] font-bold w-[400px] font-outfit">Studying with us?</h1>
-        <p className="text-[22px] w-[600px] my-8 font-outfit">
+        <h1 className="text-[40px] font-bold w-full md:w-[400px] font-outfit">Studying with us?</h1>
+        <p className="text-[22px] w-full md:w-[600px] my-8 font-outfit">
           Lorem ipsum dolor sit amet consectetur. Pretium viverra mi imperdiet
           quam. Et mauris porta donec quis ultrices tincidunt.
         </p>
@@ -17,7 +17,7 @@ const SectionEight = () => {
           </button>
         </div>
       </div>
-      <div>
+      <div className="hidden md:block">
         <Image src={SectionImg} alt="sectionimg" />
       </div>
     </div>

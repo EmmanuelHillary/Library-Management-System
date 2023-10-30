@@ -2,18 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const SmallUserList = ({ title, users }) => {
-  // Dummy data for demonstration
-  const dummyData = [
-    { userId: 1, userName: "John Doe", booksIssued: 3, department: "Science" },
-    { userId: 2, userName: "Jane Smith", booksIssued: 2, department: "Arts" },
-    {
-      userId: 3,
-      userName: "Bob Johnson",
-      booksIssued: 1,
-      department: "History",
-    },
-  ];
-
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {

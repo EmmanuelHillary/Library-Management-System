@@ -2,48 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const OverdueList = ({ title, users }) => {
-  // Dummy data for demonstration
-  const dummyData = [
-    {
-      bookId: 1,
-      user: "Brother bernard",
-      booksIssued: 25,
-      title: "Ancestor Trouble",
-      author: "James Bot",
-      overdue: 3,
-      status: "returned",
-    },
-    {
-      bookId: 2,
-      user: "Navas",
-      booksIssued: 5,
-      title: "Where our hearts collide",
-      author: "James Bot",
-      overdue: 3,
-      status: "returned",
-    },
-    {
-      bookId: 3,
-      user: "Son",
-      booksIssued: 2,
-      title: "Ancestor saved",
-      author: "James Bot",
-      overdue: 3,
-      status: "returned",
-    },
-    {
-      bookId: 4,
-      user: "Goku",
-      booksIssued: 15,
-      title: "Red",
-      author: "James Bot",
-      overdue: 3,
-      status: "returned",
-    },
-  ];
-
-
-  
   const [bookList, setBookList] = useState([]);
 
   useEffect(() => {
@@ -64,7 +22,7 @@ const OverdueList = ({ title, users }) => {
   return (
     <div className="w-full mt-8">
       <div className=" overflow-y-scroll bg-white rounded-lg shadow-md">
-        <table className="w-full font-outfit">
+        <table className="w-full font-outfit table-auto">
           <caption className="text-[20px] sm:text-[24px] font-semibold text-left p-4 mb-2 font-roboto">
             {" "}
             Book List Status
@@ -95,7 +53,7 @@ const OverdueList = ({ title, users }) => {
           </tbody>
           <tfoot>
             <tr className="bg-gray-100">
-              <td className="p-2" colSpan="7"></td>
+              <td className="p-2" colSpan="6"></td>
               <td className="p-2 text-right text-[#971713] text-[14px] font-bold">
                 See All
               </td>

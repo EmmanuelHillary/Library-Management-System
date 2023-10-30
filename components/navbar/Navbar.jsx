@@ -6,11 +6,11 @@ import RibbonButton from "../button/Ribbon-button";
 
 const Navbar = () => {
   return (
-    <div className=" flex justify-between bg-white items-center py-6 px-16 shadow-2xl z-50 w-full">
+    <div className=" flex flex-col md:flex-row justify-between bg-white items-center py-6 px-0 md:px-16 shadow-2xl z-50 w-full">
       <div>
-        <Image src={Logo} alt="logo" width={240} height={50}/>
+        <Image src={Logo} alt="logo" width={170} height={37}/>
       </div>
-      <div className="text-[#242A4A] flex gap-12 text-[16px] font-outfit items-center">
+      <div className="text-[#242A4A] flex flex-row gap-6 text-[12px] md:text-[16px] font-outfit items-center mt-4 md:mt-0">
         <Link href="#">Home</Link>
         <Link href="#">About</Link>
         <Link href="#">Catalog</Link>
