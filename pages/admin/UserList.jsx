@@ -41,7 +41,6 @@ const UserList = ({ title, users }) => {
                 <th className="p-2 text-left">User Name</th>
                 <th className="p-2 text-left">ID</th>
                 <th className="p-2 text-left">Department</th>
-                <th className="p-2 text-left">Books Issued</th>
                 <th className="p-2 text-left">Email Address</th>
               </tr>
             </thead>
@@ -79,9 +78,8 @@ const UserList = ({ title, users }) => {
                       </div>
                     </div>
                   </td>
-                  <td className="p-2">{user._id}</td>
+                  <td className="p-2">{user.userid}</td>
                   <td className="p-2">{user.department}</td>
-                  <td className="p-2">{user.__v}</td>
                   <td className="p-2">{user.email}</td>
                 </tr>
               ))}

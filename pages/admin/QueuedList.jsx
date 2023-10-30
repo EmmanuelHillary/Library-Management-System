@@ -30,12 +30,12 @@ const QueuedList = ({ title, users }) => {
     const fetchBookList = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/books/getallbooks`
+          `${process.env.NEXT_PUBLIC_BASE_URL}/books/getqueuedusers`
         );
         console.log(response);
         setTotalList(response.data);
       } catch (error) {
-        console.error("Error fetching book list:", error);
+        console.error("Error fetching queued users:", error);
       }
     };
     fetchBookList();
@@ -83,7 +83,7 @@ const QueuedList = ({ title, users }) => {
           </div>
           <div className="flex justify-between px-2 md:px-12 py-4 items-center w-full">
             <h1 className="text-[16px] md:text-[32px] font-outfit">
-              User List
+              Queue
             </h1>
             <SearchBar />
             <button className="bg-[#E4E3E3] text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit">
@@ -93,10 +93,10 @@ const QueuedList = ({ title, users }) => {
           <table className="w-full font-outfit">
             <thead>
               <tr className="bg-gray-100">
-                <th className="p-2 text-left">Book ID</th>
-                <th className="p-2 text-left">Title</th>
+                <th className="p-2 text-left">Date</th>
+                <th className="p-2 text-left">Book</th>
                 <th className="p-2 text-left">Author</th>
-                <th className="p-2 text-left">Total Issued</th>
+                <th className="p-2 text-left">User</th>
               </tr>
             </thead>
             <tbody>
@@ -109,10 +109,10 @@ const QueuedList = ({ title, users }) => {
                     boxShadow: "0 0 4px 0 rgba(0, 0, 0, 0.1)",
                   }}
                 >
-                  <td className="p-2">{user._id}</td>
-                  <td className="p-2">{user.title}</td>
+                  <td className="p-2">{user.date}</td>
+                  <td className="p-2">{user.book}</td>
                   <td className="p-2">{user.author}</td>
-                  <td className="p-2">{user.total}</td>
+                  <td className="p-2">{user.user}</td>
                 </tr>
               ))}
             </tbody>

@@ -36,20 +36,20 @@ const IssueList = ({ title, users }) => {
       <div className=" overflow-y-scroll bg-white rounded-lg shadow-md">
         <table className="w-full font-outfit">
           <caption className="text-[20px] sm:text-[24px] font-semibold text-left p-4 mb-2 font-roboto">
-            Issue List
+            Queue List
           </caption>
           <thead>
             <tr className="bg-gray-100">
               <th className="p-2">User ID</th>
               <th className="p-2">Book</th>
-              <th className="p-2">Issue Date</th>
-              <th className="p-2">Return Date</th>
+              <th className="p-2">Date</th>
+              <th className="p-2">Author</th>
             </tr>
           </thead>
           <tbody>
             {dummyData.map((user, index) => (
               <tr key={index} className="border-b border-gray-200">
-                <td className="p-2 text-center">{user.userId}</td>
+                <td className="p-2 text-center">{user.user}</td>
                 <td className="p-2 text-center">
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "center"}}>
                     <Image
@@ -69,8 +69,8 @@ const IssueList = ({ title, users }) => {
                     </div>
                   </div>
                 </td>
-                <td className="p-2 text-center">{user.isuueDate}</td>
-                <td className="p-2 text-center">{user.returnDate}</td>
+                <td className="p-2 text-center">{user.date}</td>
+                <td className="p-2 text-center">{user.author}</td>
               </tr>
             ))}
           </tbody>

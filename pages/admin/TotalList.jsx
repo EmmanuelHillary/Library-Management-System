@@ -134,8 +134,9 @@ const TotalList = ({ title, users }) => {
               <tr className="bg-gray-100">
                 <th className="p-2 text-left">Book ID</th>
                 <th className="p-2 text-left">Title</th>
+                <th className="p-2 text-left">Department</th>
                 <th className="p-2 text-left">Author</th>
-                <th className="p-2 text-left">Total Issued</th>
+                <th className="p-2 text-left">Total</th>
               </tr>
             </thead>
             <tbody>
@@ -148,8 +149,9 @@ const TotalList = ({ title, users }) => {
                     boxShadow: "0 0 4px 0 rgba(0, 0, 0, 0.1)",
                   }}
                 >
-                  <td className="p-2">{user._id}</td>
+                  <td className="p-2">{user.userid}</td>
                   <td className="p-2">{user.title}</td>
+                  <td className="p-2">{user.department}</td>
                   <td className="p-2">{user.author}</td>
                   <td className="p-2">{user.total}</td>
                 </tr>

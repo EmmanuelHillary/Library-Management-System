@@ -38,11 +38,12 @@ const BorrowedList = ({ title, users }) => {
           <table className="w-full font-outfit">
             <thead>
               <tr className="bg-gray-100">
-                <th className="p-2 text-left">ID</th>
+                <th className="p-2 text-left">Book ID</th>
                 <th className="p-2 text-left">User Name</th>
                 <th className="p-2 text-left">Books Issued</th>
                 <th className="p-2 text-left">Title</th>
                 <th className="p-2 text-left">Author</th>
+                <th className="p-2 text-left">Borrow Date</th>
                 <th className="p-2 text-left">Overdue Date</th>
                 <th className="p-2 text-left">Status</th>
               </tr>
@@ -57,7 +58,7 @@ const BorrowedList = ({ title, users }) => {
                     boxShadow: "0 0 4px 0 rgba(0, 0, 0, 0.1)",
                   }}
                 >
-                  <td className="p-2">{user._id}</td>
+                  <td className="p-2">{user.bookid}</td>
                   <td className="p-2">
                     <div style={{ display: "flex", alignItems: "center" }}>
                       <Image
@@ -85,6 +86,7 @@ const BorrowedList = ({ title, users }) => {
                   <td className="p-2">{user.total}</td>
                   <td className="p-2">{user.title}</td>
                   <td className="p-2">{user.author}</td>
+                  <td className="p-2">{user.borrowDate}</td>
                   <td className="p-2">{user.returnDate}</td>
                   <td className="p-2">{user.returned === true ? "Returned" : "Not returned"}</td>
                 </tr>
