@@ -20,6 +20,7 @@ const SignupForm = () => {
     setRegData({ ...regData, [name]: value });
   };
 
+
   const handleCheckboxChange = (e) => {
     const { checked } = e.target;
     setRememberMe(checked);
@@ -131,8 +132,8 @@ const SignupForm = () => {
           <div className="flex flex-col items-start relative w-full z-10">
             <input
               type="text"
-              id="email"
-              name="email"
+              id="department"
+              name="department"
               value={regData.department}
               onChange={handleChange}
               className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A] font-outfit"
