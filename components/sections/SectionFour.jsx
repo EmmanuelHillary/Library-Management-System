@@ -10,7 +10,7 @@ const SectionFour = () => {
         <Image src={BgDesign} alt="bgdesign" className="absolute left-0"/>
       <div>
         <h3 className="text-[20px] font-bold flex items-center font-outfit">
-          What's Next <Image src={Jigsaw} alt="jigsaw" />
+          Whats Next <Image src={Jigsaw} alt="jigsaw" />
         </h3>
         <h1 className="text-[40px] font-bold w-full md:w-[400px] font-outfit">
           What books can you find on E-library
