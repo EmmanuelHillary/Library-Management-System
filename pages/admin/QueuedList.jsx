@@ -57,6 +57,7 @@ const QueuedList = ({ title, users }) => {
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
                     }}
+                    key={index}
                   >
                     <div>
                       <h1 className="text-white">Book ID : #A - -xxxx - -xx</h1>
