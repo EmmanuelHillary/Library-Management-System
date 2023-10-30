@@ -22,7 +22,7 @@ const SectionNine = () => {
   return (
     <div className="flex justify-center items-center h-screen" style={divStyle}>
       <div style={overlayStyle}></div>
-      <div className="text-white text-[36px] text-center z-10">
+      <div className="text-white text-[36px] text-center z-10 font-outfit">
         “A reader lives a thousand lives before he dies. The man who never reads
         lives only one.“ -George R.R. Martin
       </div>

@@ -30,57 +30,92 @@ const AdminSidebar = ({ isSidebarOpen }) => {
       <nav className="w-full flex flex-col items-center gap-8">
         <div>
           <Link
-            href="/"
+            href="/admin/Dashboard"
             className={`text-white hover:bg-[#971713] py-1
             justify-center flex items-center w-full ${
-              isActive("/") ? " bg-[#971713]" : ""
+              isActive("/admin/Dashboard") ? "border-2 border-white" : ""
             }`}
           >
-              <RxDashboard  style={{ width: '30px', height: '30px' }} className="m-2"/>
+            <RxDashboard
+              style={{ width: "30px", height: "30px" }}
+              className="m-2"
+            />
+            {isSidebarOpen ? "Dashboard": ""}
           </Link>
         </div>
         <div>
           <Link
-            href="/users"
+            href="/admin/UserList"
             className={`text-white hover:bg-[#971713] py-1
             justify-center flex items-center w-full ${
-              isActive("/users") ? " bg-[#971713]" : ""
-            }`}
-      >      
-              <HiUsers  style={{ width: '30px', height: '30px' }} className="m-2" />
-          </Link>
-        </div>
-        <div>
-          <Link
-            href="/admins"
-            className={`text-white hover:bg-[#971713] py-1
-            justify-center flex items-center w-full ${
-              isActive("/admins") ? " bg-[#971713]" : ""
+              isActive("/admin/UserList") ? "border-2 border-white" : ""
             }`}
           >
-              <IoMdSettings style={{ width: '30px', height: '30px' }} className="m-2"  />
+            <HiUsers
+              style={{ width: "30px", height: "30px" }}
+              className="m-2"
+            />
+             {isSidebarOpen ? "Users": ""}
           </Link>
         </div>
         <div>
           <Link
-            href="/calendar"
+            href=""
+            className={`text-white hover:bg-[#971713] py-1
+            justify-center flex items-center w-full ${
+              isActive("") ? "border-2 border-white" : ""
+            }`}
+          >
+            <IoMdSettings
+              style={{ width: "30px", height: "30px" }}
+              className="m-2"
+            />
+             {isSidebarOpen ? "Settings": ""}
+          </Link>
+        </div>
+        <div>
+          <Link
+            href="/admin/BorrowedList"
             className={`text-white  hover:bg-[#971713] py-1
             justify-center flex items-center w-full ${
-              isActive("/calendar") ? " bg-[#971713]" : ""
+              isActive("/admin/BorrowedList") ? " border-2 border-white" : ""
             }`}
           >
-              <BsFillCalendarWeekFill  style={{ width: '30px', height: '30px' }} className="m-2" />
+            <BsFillCalendarWeekFill
+              style={{ width: "30px", height: "30px" }}
+              className="m-2"
+            />
+             {isSidebarOpen ? "Borrowed Books": ""}
           </Link>
         </div>
         <div>
           <Link
-            href="/books"
+            href="/admin/TotalList"
             className={`text-white  hover:bg-[#971713] py-1
             justify-center flex items-center w-full ${
-              isActive("/books") ? " bg-[#971713]" : ""
+              isActive("/admin/TotalList") ? " border-2 border-white" : ""
             }`}
           >
-              <ImBooks  style={{ width: '30px', height: '30px' }} className="m-2" />
+            <ImBooks
+              style={{ width: "30px", height: "30px" }}
+              className="m-2"
+            />
+             {isSidebarOpen ? "All Books": ""}
+          </Link>
+        </div>
+        <div>
+          <Link
+            href="/admin/QueuedList"
+            className={`text-white  hover:bg-[#971713] py-1
+            justify-center flex items-center w-full ${
+              isActive("/admin/QueuedList") ? "border-2 border-white" : ""
+            }`}
+          >
+            <ImBooks
+              style={{ width: "30px", height: "30px" }}
+              className="m-2"
+            />
+             {isSidebarOpen ? "Queued Books": ""}
           </Link>
         </div>
       </nav>

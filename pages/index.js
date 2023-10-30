@@ -10,10 +10,13 @@ import SectionEight from "@/components/sections/SectionEight";
 import SectionNine from "@/components/sections/SectionNine";
 import Footer from "@/components/footer/Footer";
 
+
 export default function Home() {
+
   return (
     <div>
       <Navbar />
+
       <SectionOne />
       <SectionTwo />
       <SectionThree />

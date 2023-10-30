@@ -16,7 +16,7 @@ const SectionEight = () => {
           </button>
         </div>
       </div>
-      <div>
+      <div className="hidden md:block">
         <Image src={SectionImg} alt="sectionimg" />
       </div>
     </div>

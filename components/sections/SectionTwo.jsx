@@ -48,10 +48,10 @@ const SectionTwo = () => {
         <h3 className="text-[20px] font-bold flex items-center font-outfit">
           Features <Image src={Jigsaw} alt="jigsaw" />
         </h3>
-        <h1 className="text-[40px] font-bold font-outfit">Explore E-Libary’s</h1>
-        <h1 className="text-[40px] font-bold font-outfit">Unlimited Possibilities</h1>
+        <h1 className="text-[24px] md:text-[40px] font-bold font-outfit">Explore E-Libary’s</h1>
+        <h1 className="text-[24px] md:text-[40px] font-bold font-outfit">Unlimited Possibilities</h1>
       </div>
-      <div className="flex justify-between items-center mt-8">
+      <div className="flex flex-col md:flex-row justify-between items-center mt-8">
         {data.map((card, index) => {
           return (
             <FeatureCards
@@ -59,6 +59,7 @@ const SectionTwo = () => {
               imagePath={card.imagePath}
               headerText={card.headerText}
               bodyText={card.bodyText}
+              key={index}
             />
           );
         })}
