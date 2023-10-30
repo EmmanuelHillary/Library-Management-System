@@ -11,7 +11,7 @@ const Navbar = () => {
         <Image src={Logo} alt="logo" width={240} height={50}/>
       </div>
       <div className="text-[#242A4A] flex gap-12 text-[16px] font-outfit items-center">
-        <Link href="#">Home</Link>
+        <Link href="/">Home</Link>
         <Link href="#">About</Link>
         <Link href="#">Catalog</Link>
         <Link href={"/authentication/Admin"} className="text-[#971713] bg-[#FFECEC] py-2 px-4">Admin</Link>

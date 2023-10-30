@@ -3,20 +3,22 @@ import Link from "next/link";
 import axios from "axios";
 import Eye from "../../public/eye.png";
 import Image from "next/image";
+import { useUsersSignUpMutation } from "@/app/apiSlices/auth";
 
 
 const SignupForm = () => {
   const [regData, setRegData] = useState({
     username: "",
     email: "",
+    department:"",
     password: "",
     repeat_password: "",
     remember_me: false,
   });
-  const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [usersSignUp, { error: signUpError, isLoading }] = useUsersSignUpMutation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,62 +29,22 @@ const SignupForm = () => {
     const { checked } = e.target;
     setRememberMe(checked);
   };
-  // //   const [isOpen, setIsOpen] = useState(false);
-  // //   const [categories, setCategories] = useState([]);
-  // //   const [error, setError] = useState("");
-  // //
 
-  // //   const handleSubmit = (e) => {
-  // //     e.preventDefault();
-  // //     setLoading(true);
 
-  // //     const registrationApiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}hackathon/registration`;
-
-  // //     axios
-  // //       .post(registrationApiUrl, regData, {
-  // //         headers: {
-  // //           "Content-Type": "application/json",
-  // //         },
-  // //       })
-  // //       .then((response) => {
-  // //         console.log(response);
-  // //         setLoading(false);
-  // //         setIsOpen(true);
-  // //       })
-  // //       .catch((error) => {
-  // //         console.log("Error:", error);
-  // //         if (error.response && error.response.data) {
-  // //           setError(error.response.data.email[0]);
-  // //         } else {
-  // //           setError("An error occurred during registration.");
-  // //         }
-  // //       });
-  // //   };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if(isLoading) return;
     if (regData.password !== regData.repeat_password) {
       setError("Passwords do not match");
       return;
     }
-    setLoading(true);
-    const signupUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/users/usersignup`;
-    axios
-      .post(signupUrl, regData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        console.log(response);
-        alert("User Created, Log in");
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    try {
+      const res = await usersSignUp(regData).unwrap();
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+      setError(error.data.message ?? "Failed to signup, please try again");
+    }
   };
   return (
     <div
@@ -127,6 +89,20 @@ const SignupForm = () => {
               className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A] font-outfit"
               required
               placeholder="Enter your Email Address"
+            />
+          </div>
+        </div>
+        <div className="py-2 text-[13px] md:text-[14px] flex md:flex-row flex-col justify-between items-center gap-2 md:gap-8">
+          <div className="flex flex-col items-start relative w-full z-10">
+            <input
+              type="text"
+              id="department"
+              name="department"
+              value={regData.department}
+              onChange={handleChange}
+              className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A] font-outfit"
+              required
+              placeholder="Enter your department"
             />
           </div>
         </div>

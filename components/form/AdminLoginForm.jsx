@@ -4,11 +4,11 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Eye from "../../public/eye.png";
 import Image from "next/image";
-import { useLoginUserMutation } from "@/app/apiSlices/auth";
+import { useLoginAdminMutation } from "@/app/apiSlices/auth";
 import { useDispatch } from "react-redux";
 import { setToken, setUser } from "@/app/slices/authSlice";
 
-const LoginForm = () => {
+const AdminLoginForm = () => {
   const router = useRouter();
   const [loginData, setLoginData] = useState({
     username: "",
@@ -17,7 +17,7 @@ const LoginForm = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [login, { error: loginError, isLoading }] = useLoginUserMutation();
+  const [login, { error: loginError, isLoading }] = useLoginAdminMutation();
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -38,7 +38,7 @@ const LoginForm = () => {
       console.log(res);
       dispatch(setToken(res.access_token));
       dispatch(setUser(loginData.username));
-      router.push("/user/dashboard");
+      router.push("/admin/Dashboard");
 
     } catch (error) {
       console.log(error);
@@ -136,4 +136,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default AdminLoginForm;
