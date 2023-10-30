@@ -10,28 +10,28 @@ const data = [
     imagePath: "books.png",
     headerText: "120+ Million resourses",
     bodyText:
-      "Lorem ipsum dolor sit amet consectetur. Nec tincidunt lacus malesuada felis venenatis donec. Pellentesque lorem faucibus egestas volutpat mauris porta viverra. Aliquet purus ornare rhoncus proin tellus faucibus pellentesque iaculis ut. Eget mi vel blandit eu tellus purus id laoreet vel.",
+      "Physical books and ebooks readily available at the click of a button.",
   },
   {
     background: "white",
     imagePath: "docs.png",
     headerText: "Various Formats",
     bodyText:
-      "Lorem ipsum dolor sit amet consectetur. Nec tincidunt lacus malesuada felis venenatis donec. Pellentesque lorem faucibus egestas volutpat mauris porta viverra. Aliquet purus ornare rhoncus proin tellus faucibus pellentesque iaculis ut. Eget mi vel blandit eu tellus purus id laoreet vel.",
+      "Faster understanding and quick review of lengthy documents with audiobooks.",
   },
   {
     background: "white",
     imagePath: "thumbs.png",
     headerText: "Best Quality",
     bodyText:
-      "Lorem ipsum dolor sit amet consectetur. Nec tincidunt lacus malesuada felis venenatis donec. Pellentesque lorem faucibus egestas volutpat mauris porta viverra. Aliquet purus ornare rhoncus proin tellus faucibus pellentesque iaculis ut. Eget mi vel blandit eu tellus purus id laoreet vel.",
+      "Immerse yourself in the audio visual approach to research.",
   },
   {
     background: "white",
     imagePath: "lightning.png",
     headerText: "Quick Delivery",
     bodyText:
-      "Lorem ipsum dolor sit amet consectetur. Nec tincidunt lacus malesuada felis venenatis donec. Pellentesque lorem faucibus egestas volutpat mauris porta viverra. Aliquet purus ornare rhoncus proin tellus faucibus pellentesque iaculis ut. Eget mi vel blandit eu tellus purus id laoreet vel.",
+      "Multiple sources and AI driven research for the papers you need in one click.",
   },
 ];
 
