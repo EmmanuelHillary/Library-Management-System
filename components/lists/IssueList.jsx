@@ -40,7 +40,7 @@ const IssueList = ({ title, users }) => {
           </caption>
           <thead>
             <tr className="bg-gray-100">
-              <th className="p-2">User ID</th>
+              <th className="p-2">User</th>
               <th className="p-2">Book</th>
               <th className="p-2">Date</th>
               <th className="p-2">Author</th>

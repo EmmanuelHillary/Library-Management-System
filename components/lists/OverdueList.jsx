@@ -42,7 +42,7 @@ const OverdueList = ({ title, users }) => {
           <tbody>
             {bookList.map((user, index) => (
               <tr key={index} className="border-b border-gray-200">
-                <td className="p-2 text-center">{user.bookid}</td>
+                <td className="p-2 text-center">{user.borrowedBookid}</td>
                 <td className="p-2 text-center">{user.userid}</td>
                 <td className="p-2 text-center">{user.total}</td>
                 <td className="p-2 text-center">{user.title}</td>

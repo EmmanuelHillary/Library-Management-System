@@ -149,7 +149,7 @@ const TotalList = ({ title, users }) => {
                     boxShadow: "0 0 4px 0 rgba(0, 0, 0, 0.1)",
                   }}
                 >
-                  <td className="p-2">{user.userid}</td>
+                  <td className="p-2">{user.bookid}</td>
                   <td className="p-2">{user.title}</td>
                   <td className="p-2">{user.department}</td>
                   <td className="p-2">{user.author}</td>
