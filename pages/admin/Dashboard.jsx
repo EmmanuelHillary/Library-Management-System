@@ -147,6 +147,7 @@ const Dashboard = () => {
           {cardData.map((card, index) => {
             return (
               <DashboardCard
+                key={index}
                 title={card.title}
                 number={card.number}
                 icon={card.icon}
@@ -163,7 +164,7 @@ const Dashboard = () => {
           <div className="flex flex-row justify-between overflow-x-scroll w-full">
             {books.map((book, index) => {
               return (
-                <div className="min-w-[176px] mr-12">
+                <div className="min-w-[176px] mr-12" key={index}>
                   <Image loader={() => book.imageUrl} src={book.imageUrl} alt="book imageUrl" width={176} height={100} />
                   <h1 className="text-[18px] font-outfit text-center">
                     {book.title}
