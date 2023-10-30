@@ -59,6 +59,7 @@ const SectionTwo = () => {
               imagePath={card.imagePath}
               headerText={card.headerText}
               bodyText={card.bodyText}
+              key={index}
             />
           );
         })}
