@@ -1,19 +1,10 @@
 import React, { useState, useEffect } from "react";
 import profile from "../../public/user.png";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 
 const AdminNavbar = ({ toggleSidebar, title }) => {
-  const [name, setName] = useState("");
-
-  useEffect(() => {
-    // Get item from local storage
-    const storedName = localStorage.getItem("name");
-
-    // Update the state with the retrieved name
-    if (storedName) {
-      setName(storedName);
-    }
-  }, []);
+  const {user: name} = useSelector((state) => state.auth);
   return (
     <div className="flex justify-between items-center bg-white shadow-custom p-4">
       <div className="flex items-center">
@@ -23,7 +14,7 @@ const AdminNavbar = ({ toggleSidebar, title }) => {
         >
           &#9776;
         </button>
-        <h2 className="text-textGreen font-semibold text-[20px] sm:text-[28px] text-[#971713] pl-4 font-outfit">
+        <h2 className="text-textGreen font-medium capitalize text-[20px] sm:text-[28px] text-[#971713] pl-4 font-outfit">
           {title}
         </h2>
       </div>
