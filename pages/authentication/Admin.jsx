@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
-import LoginForm from "@/components/form/LoginForm";
+import AdminLoginForm from "@/components/form/AdminLoginForm";
 
 const Admin = () => {
   return (
@@ -18,7 +18,7 @@ const Admin = () => {
             <div className=" text-white flex xl:flex-row flex-col items-center gap-8 justify-center px-0 md:px-20">
               <div className="relative">
                 <div>
-                  <LoginForm />
+                  <AdminLoginForm />
                 </div>
               </div>
             </div>
