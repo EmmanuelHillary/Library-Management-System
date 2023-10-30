@@ -17,6 +17,7 @@ const SignupForm = () => {
   });
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [usersSignUp, { error: signUpError, isLoading }] = useUsersSignUpMutation();
 
@@ -42,9 +43,10 @@ const SignupForm = () => {
     try {
       const res = await usersSignUp(regData).unwrap();
       console.log(res);
+      setSuccess(res?.data?.message ?? "Signup Successful");
     } catch (error) {
       console.log(error);
-      setError(error.data.message ?? "Failed to signup, please try again");
+      setError(error?.data?.message ?? "Failed to signup, please try again");
     }
   };
   return (
@@ -178,6 +180,11 @@ const SignupForm = () => {
         {error && (
           <div className="text-white text-[13px] font-mont border-2 border-[#150E28] p-2 my-2 bg-red-500">
             {error}
+          </div>
+        )}
+        {success && (
+          <div className="text-white text-[13px] font-mont border-2 border-[#150E28] p-2 my-2 bg-green-500">
+            {success}
           </div>
         )}
       </form>
