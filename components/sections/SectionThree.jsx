@@ -37,9 +37,7 @@ const SectionThree = () => {
         </div>
         <div className="mt-4 w-full md:w-[600px] mx-auto md:mx-0">
           <p className="text-lg md:text-2xl font-outfit">
-            Lorem ipsum dolor sit amet consectetur. Risus dapibus quam elementum nunc. Ultrices purus enim bibendum
-            libero. Ut nibh quis sem augue vitae id. Tellus viverra enim est metus pellentesque praesent est sed
-            elementum. Suspendisse id tristique vel in.
+          An eLibrary, short for "electronic library," is a digital platform or repository that provides access to a wide range of digital resources, including ebooks, audiobooks, academic journals, magazines, and other digital materials. 
           </p>
         </div>
         <div className="text-white mt-8 md:mt-12 text-lg flex flex-col md:flex-row gap-4 items-center font-semibold">
