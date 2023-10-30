@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <div className=" fixed top-0 flex justify-between bg-white items-center py-6 px-16 shadow-2xl z-50 w-full">
       <div>
-        <Image src={Logo} alt="logo" width={240} height={50}/>
+        <Image src={Logo} alt="logo" width={170} height={37}/>
       </div>
       <div className="text-[#242A4A] flex gap-12 text-[16px] font-outfit items-center">
         <Link href="/">Home</Link>

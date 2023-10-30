@@ -35,7 +35,7 @@ const SmallBookList = ({ title, users }) => {
           <tbody>
             {bookList.map((book, index) => (
               <tr key={index} className="border-b border-gray-200">
-                <td className="p-2 text-center">{book._id}</td>
+                <td className="p-2 text-center">{book.bookid}</td>
                 <td className="p-2 text-center">{book.title}</td>
                 <td className="p-2 text-center">{book.author}</td>
                 <td className="p-2 text-center">{book.total}</td>

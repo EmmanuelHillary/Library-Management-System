@@ -110,18 +110,18 @@ const LoginForm = () => {
                   onChange={handleCheckboxChange}
                 />
                 <span className="checkbox-icon"></span>
-                <div className=" text-[20px] font-outfit">Remember me?</div>
+                <div className=" text-[16px] md:text-[20px] font-outfit">Remember me?</div>
               </label>
             </div>
             <div>
-              <Link className="text-[20px] text-[#971713] font-outfit" href="#">
+              <Link className="text-[16px] md:text-[20px] text-[#971713] font-outfit" href="#">
                 Forgot Password?
               </Link>
             </div>
           </div>
 
           <div className="flex justify-center border-transparent w-full mt-12 relative z-10">
-            <button className="border-4 border-[#971713] font-outfit bg-[#971713] px-16 py-2 rounded-[50px] hover:bg-transparent text-[32px]">
+            <button className="border-4 border-[#971713] font-outfit bg-[#971713] px-16 py-2 rounded-[50px] hover:bg-transparent text-[16px] md:text-[32px]">
               Log in
             </button>
           </div>

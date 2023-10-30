@@ -13,17 +13,17 @@ const SectionFive = () => {
         backgroundPosition: "center"
       }}
     >
-      <div>
+      <div className="hidden md:block">
         <Image src={SectionImg1} alt="sectionimg1" />
       </div>
       <div>
         <h3 className="text-[20px] font-bold flex items-center font-outfit">
           Pro tip <Image src={Jigsaw} alt="jigsaw" />
         </h3>
-        <h1 className="text-[40px] font-bold w-[400px] font-outfit">
+        <h1 className="text-[40px] font-bold w-full md:w-[400px] font-outfit">
           Hardcopies or soft copies?
         </h1>
-        <p className="text-[22px] w-[600px] my-8 font-outfit">
+        <p className="text-lg md:text-[22px] w-full md:w-[600px] my-8 font-outfit">
           Lorem ipsum dolor sit amet consectetur. Pretium viverra mi imperdiet
           quam. Et mauris porta donec quis ultrices tincidunt. Elit duis posuere
           enim velit. Tortor pellentesque id in purus lectus arcu purus

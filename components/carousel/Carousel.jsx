@@ -21,9 +21,9 @@ function Carousel() {
     <>
       <div className="p-5 md:p-10 lg:p-20">
         <div className="overflow-div">
-          {Book.map((person) => {
+          {Book.map((person, index) => {
             return (
-              <div className="stylist ">
+              <div className="stylist " key={index}>
                 <div className="back-grad">
                 <Image
                   src={Dummy}

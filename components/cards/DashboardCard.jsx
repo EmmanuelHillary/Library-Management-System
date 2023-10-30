@@ -4,7 +4,7 @@ import Link from "next/link";
 const DashboardCard = ({ title, number, icon: Icon }) => {
   return (
     <Link href="#">
-      <div className="bg-white  rounded-2xl p-4 w-[280px] sm:w-[370px] h-[130px] shadow-2xl flex justify-between items-center">
+      <div className="bg-white  rounded-2xl p-4 w-full sm:w-[370px] h-[130px] shadow-2xl flex justify-between items-center">
         <div>
           <p className="text-black text-[16px] font-roboto font-outfit">{title}</p>
           <p className="text-[28px] font-bold text-black font-roboto font-outfit">

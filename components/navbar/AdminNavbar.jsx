@@ -10,7 +10,7 @@ const AdminNavbar = ({ toggleSidebar, title }) => {
       <div className="flex items-center">
         <button
           onClick={toggleSidebar}
-          className="lg:hidden text-black font-semibold text-[32px] font-roboto pl-4 focus:outline-none z-50"
+          className="lg:hidden text-[#EAAA00] font-semibold text-[32px] font-roboto pl-4 focus:outline-none z-50"
         >
           &#9776;
         </button>
