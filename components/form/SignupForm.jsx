@@ -6,6 +6,7 @@ const SignupForm = () => {
   const [regData, setRegData] = useState({
     username: "",
     email: "",
+    department:"",
     password: "",
     repeat_password: "",
     remember_me: false,
@@ -123,6 +124,20 @@ const SignupForm = () => {
               className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A] font-outfit"
               required
               placeholder="Enter your Email Address"
+            />
+          </div>
+        </div>
+        <div className="py-2 text-[13px] md:text-[14px] flex md:flex-row flex-col justify-between items-center gap-2 md:gap-8">
+          <div className="flex flex-col items-start relative w-full z-10">
+            <input
+              type="text"
+              id="email"
+              name="email"
+              value={regData.department}
+              onChange={handleChange}
+              className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A] font-outfit"
+              required
+              placeholder="Enter your Department"
             />
           </div>
         </div>
