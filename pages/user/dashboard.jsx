@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux'; // Import useSelector from Redux
 import UserLayout from '@/components/layout/userLayout';
 import Intro from '@/components/user/Intro';
-import Fields from '@/components/user/Fields'; // Updated import with a capital "F" for Fields
+import Fields from '@/components/user/fields';
 
 const Dashboard = () => {
   // Access the authentication token from Redux store
