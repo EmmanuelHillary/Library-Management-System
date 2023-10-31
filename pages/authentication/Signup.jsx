@@ -8,7 +8,7 @@ const Signup = () => {
     <div>
       <div
         style={{
-          backgroundImage: "url(/hero.png)",
+          backgroundImage: "",
           backgroundSize: "cover",
         }}
       >

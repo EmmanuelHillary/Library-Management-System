@@ -29,7 +29,7 @@ const BorrowedList = ({ title, users }) => {
       <div className="w-full mt-8 p-8">
         <div className="overflow-y-scroll bg-white rounded-lg shadow-md ">
         <div className="flex justify-between px-2 md:px-12 py-4 items-center w-full">
-            <h1 className="text-[16px] md:text-[32px] font-outfit">User List</h1>
+            <h1 className="text-[16px] md:text-[32px] font-outfit">Borrow List</h1>
             <SearchBar />
             <button className="bg-[#E4E3E3] text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit">
               Sort by
@@ -40,11 +40,12 @@ const BorrowedList = ({ title, users }) => {
               <tr className="bg-gray-100">
                 <th className="p-2 text-left">Book ID</th>
                 <th className="p-2 text-left">User Name</th>
-                <th className="p-2 text-left">Books Issued</th>
+                <th className="p-2 text-left">Book Issued</th>
                 <th className="p-2 text-left">Title</th>
                 <th className="p-2 text-left">Author</th>
                 <th className="p-2 text-left">Borrow Date</th>
                 <th className="p-2 text-left">Overdue Date</th>
+                <th className="p-2 text-left">Overdue</th>
                 <th className="p-2 text-left">Status</th>
               </tr>
             </thead>
@@ -58,7 +59,7 @@ const BorrowedList = ({ title, users }) => {
                     boxShadow: "0 0 4px 0 rgba(0, 0, 0, 0.1)",
                   }}
                 >
-                  <td className="p-2">{user.bookid}</td>
+                  <td className="p-2">{user.borrowedBookid}</td>
                   <td className="p-2">
                     <div style={{ display: "flex", alignItems: "center" }}>
                       <Image
@@ -88,6 +89,7 @@ const BorrowedList = ({ title, users }) => {
                   <td className="p-2">{user.author}</td>
                   <td className="p-2">{user.borrowDate}</td>
                   <td className="p-2">{user.returnDate}</td>
+                  <td className="p-2">{user.overdue === true ? "overdue" : "Not overdue"}</td>
                   <td className="p-2">{user.returned === true ? "Returned" : "Not returned"}</td>
                 </tr>
               ))}
