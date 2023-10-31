@@ -18,7 +18,7 @@ const Footer = () => {
             <Image src={Logo} alt="Logo" className="md:w-[143px] md:h-[27px] w-[95px] h-[19px] bg-white"/>
 
             <p className="font-mont text-[12px] text-white w-full sm:w-[350px] md:w-[408px] py-4">
-            Lorem ipsum dolor sit amet consectetur. Risus dapibus quam elementum nunc. Ultrices purus enim bibendum libero. Ut nibh quis sem augue vitae id. .
+            Join our digital library community today and embark on your reading adventures in the virtual realm. Your next literary escape is just a click away. Happy reading!
             </p>
             <p className="font-mont text-[12px] pt-4 md:pt-16 text-white">
               <span className="border-r-2 border-[#971713] pr-3 navbar-text">

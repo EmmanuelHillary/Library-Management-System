@@ -10,15 +10,15 @@ import Footer from "@/components/footer/Footer";
 const dummyData = [
   {
     userId: 1,
-    title: "The Hypocrite World",
+    title: "The Good World",
     date: "March 7, 2014",
-    desc: "Lorem ipsum dolor sit amet consectetur. Lectus eros cras proin non donec facilisis egestas. Integer nulla feugiat vivamus dignissim ut. Pellentesque ac nulla ultrices cursus scelerisque maecenas libero scelerisque orci. Sit mauris tristique vestibulum elit etiam sed volutpat diam sed.",
+    desc: "Welcome to our digital haven of knowledge, where you can embark on literary journeys from the comfort of your device. Our e-library is your passport to an expansive world of books, accessible with just a few clicks.",
     booksIssued: 3,
     requests: 5000,
     department: "Science",
     bookpicture: Book,
     authorpicture: User,
-    author: "somebody wrote",
+    author: "HILLARY",
     authordesc: "something something about the author",
   },
 ];
