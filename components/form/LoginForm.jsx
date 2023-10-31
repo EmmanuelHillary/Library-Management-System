@@ -35,13 +35,13 @@ const LoginForm = () => {
     if (isLoading) return;
     try {
       const res = await login(loginData).unwrap();
-      console.log(res);
+    
       dispatch(setToken(res.access_token));
       dispatch(setUser(loginData.username));
       router.push("/user/dashboard");
 
     } catch (error) {
-      console.log(error);
+  
       setError(error.data.message ?? "Failed to login, please try again");
     }
   };

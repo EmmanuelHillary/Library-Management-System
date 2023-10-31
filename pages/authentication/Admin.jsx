@@ -16,7 +16,7 @@ const Admin = () => {
         <div>
           <div className="bg-transparent relative overflow-hidden">
             <div className=" text-white flex xl:flex-row flex-col items-center gap-8 justify-center px-0 md:px-20">
-              <div className="relative">
+              <div className=" mt-24">
                 <div>
                   <AdminLoginForm />
                 </div>

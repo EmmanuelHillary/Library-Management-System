@@ -23,8 +23,9 @@ const dummyData = [
   },
 ];
 
-const QueuedList = ({ title, users }) => {
+const QueuedList = () => {
   const [totalList, setTotalList] = useState([]);
+  const [originalUserList, setOriginalUserList] = useState([]);
 
   useEffect(() => {
     const fetchBookList = async () => {
@@ -32,7 +33,7 @@ const QueuedList = ({ title, users }) => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BASE_URL}/books/getqueuedusers`
         );
-        console.log(response);
+        setOriginalUserList(response.data);
         setTotalList(response.data);
       } catch (error) {
         console.error("Error fetching queued users:", error);
@@ -40,6 +41,18 @@ const QueuedList = ({ title, users }) => {
     };
     fetchBookList();
   }, []);
+
+  const handleSearch = (searchText) => {
+    if (searchText === "") {
+      setTotalList(originalUserList);
+    } else {
+      // Perform the search logic based on the searchText
+      const filteredUsers = originalUserList.filter((title) =>
+        title.book.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setTotalList(filteredUsers);
+    }
+  };
 
   return (
     <AdminLayout title="Database">
@@ -85,7 +98,7 @@ const QueuedList = ({ title, users }) => {
             <h1 className="text-[16px] md:text-[32px] font-outfit">
               Queue
             </h1>
-            <SearchBar />
+            <SearchBar onSearch={handleSearch}/>
             <button className="bg-[#E4E3E3] text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit">
               Sort by
             </button>

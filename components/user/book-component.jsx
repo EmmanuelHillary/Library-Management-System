@@ -5,7 +5,6 @@ const BookComponent = ({ title, author, image, id, authToken, book }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [borrowed, setBorrowed] = useState(false);
   const handleBorrow = () => {
-    console.log(authToken)
     axios
       .post(
         `https://librarymanagementsys-20df705de90f.herokuapp.com/lib/v1/books/borrowbooks/${id}`,

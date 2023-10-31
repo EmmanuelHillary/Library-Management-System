@@ -42,10 +42,10 @@ const SignupForm = () => {
     }
     try {
       const res = await usersSignUp(regData).unwrap();
-      console.log(res);
+  
       setSuccess(res?.data?.message ?? "Signup Successful");
     } catch (error) {
-      console.log(error);
+  
       setError(error?.data?.message ?? "Failed to signup, please try again");
     }
   };
