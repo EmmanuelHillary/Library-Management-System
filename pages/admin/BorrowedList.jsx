@@ -6,8 +6,9 @@ import SearchBar from "@/components/inputs/SearchBar";
 import axios from "axios";
 import Footer from "@/components/footer/Footer";
 
-const BorrowedList = ({ title, users }) => {
+const BorrowedList = () => {
   const [borrowedList, setBorrowedList] = useState([]);
+  const [originalUserList, setOriginalUserList] = useState([]);
 
   useEffect(() => {
     const fetchBookList = async () => {
@@ -15,7 +16,7 @@ const BorrowedList = ({ title, users }) => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BASE_URL}/books/getborrowedbooks`
         );
-        console.log(response);
+        setOriginalUserList(response.data);
         setBorrowedList(response.data);
       } catch (error) {
         console.error("Error fetching book list:", error);
@@ -24,13 +25,25 @@ const BorrowedList = ({ title, users }) => {
     fetchBookList();
   }, []);
 
+  const handleSearch = (searchText) => {
+    if (searchText === "") {
+      setBorrowedList(originalUserList);
+    } else {
+      // Perform the search logic based on the searchText
+      const filteredUsers = originalUserList.filter((user) =>
+        user.username.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setBorrowedList(filteredUsers);
+    }
+  };
+
   return (
     <AdminLayout title="Database">
       <div className="w-full mt-8 p-8">
         <div className="overflow-y-scroll bg-white rounded-lg shadow-md ">
         <div className="flex justify-between px-2 md:px-12 py-4 items-center w-full">
             <h1 className="text-[16px] md:text-[32px] font-outfit">Borrow List</h1>
-            <SearchBar />
+            <SearchBar onSearch={handleSearch}/>
             <button className="bg-[#E4E3E3] text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit">
               Sort by
             </button>
@@ -96,7 +109,7 @@ const BorrowedList = ({ title, users }) => {
             </tbody>
             <tfoot>
               <tr className="bg-gray-100">
-                <td className="p-2" colSpan="6"></td>
+                <td className="p-2" colSpan="8"></td>
                 <td className="p-2 text-right text-[#971713] text-[14px] font-bold">
                   See All
                 </td>

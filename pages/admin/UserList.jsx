@@ -6,31 +6,45 @@ import SearchBar from "@/components/inputs/SearchBar";
 import axios from "axios";
 import Footer from "@/components/footer/Footer";
 
-const UserList = ({ title, users }) => {
+const UserList = () => {
   const [userList, setUserList] = useState([]);
+  const [originalUserList, setOriginalUserList] = useState([]);
 
   useEffect(() => {
-    const fetchBookList = async () => {
+    const fetchUserList = async () => {
       try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BASE_URL}/users/getallusers`
         );
-        console.log(response);
+        setOriginalUserList(response.data);
         setUserList(response.data);
       } catch (error) {
-        console.error("Error fetching book list:", error);
+        console.error("Error fetching user list:", error);
       }
     };
-    fetchBookList();
+    fetchUserList();
   }, []);
 
+  const handleSearch = (searchText) => {
+    if (searchText === "") {
+      setUserList(originalUserList);
+    } else {
+      // Perform the search logic based on the searchText
+      const filteredUsers = originalUserList.filter((user) =>
+        user.username.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setUserList(filteredUsers);
+    }
+  };
   return (
     <AdminLayout title="Database">
       <div className="w-full mt-8 p-8 overflow-x-scroll">
         <div className="overflow-y-scroll bg-white rounded-lg shadow-md ">
           <div className="flex justify-between px-2 md:px-12 py-4 items-center w-full">
-            <h1 className="text-[16px] md:text-[32px] font-outfit">User List</h1>
-            <SearchBar />
+            <h1 className="text-[16px] md:text-[32px] font-outfit">
+              User List
+            </h1>
+            <SearchBar onSearch={handleSearch} />
             <button className="bg-[#E4E3E3] text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit">
               Sort by
             </button>
@@ -86,7 +100,7 @@ const UserList = ({ title, users }) => {
             </tbody>
             <tfoot>
               <tr className="bg-gray-100">
-                <td className="p-2" colSpan="4"></td>
+                <td className="p-2" colSpan="3"></td>
                 <td className="p-2 text-right text-[#971713] text-[14px] font-bold">
                   See All
                 </td>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Link from "next/link";
 
 const SmallBookList = ({ title, users }) => {
   const [bookList, setBookList] = useState([]);
@@ -10,7 +11,6 @@ const SmallBookList = ({ title, users }) => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BASE_URL}/books/getallbooks`
         );
-        console.log(response)
         setBookList(response.data.slice(0, 3)); // Slicing the array to display only the first 3 values
       } catch (error) {
         console.error("Error fetching book list:", error);
@@ -45,7 +45,10 @@ const SmallBookList = ({ title, users }) => {
           <tfoot>
             <tr className="bg-gray-100">
               <td className="p-2" colSpan="3"></td>
-              <td className="p-2 text-right text-[#971713] text-[14px] font-bold">See All</td>
+              <td className="p-2 text-right text-[#971713] text-[14px] font-bold">
+                {" "}
+                <Link href={"/admin/TotalList"}>See All</Link>
+              </td>
             </tr>
           </tfoot>
         </table>

@@ -40,7 +40,6 @@ const AdminSidebar = ({ isSidebarOpen }) => {
               style={{ width: "30px", height: "30px" }}
               className="m-2"
             />
-            {isSidebarOpen ? "Dashboard": ""}
           </Link>
         </div>
         <div>
@@ -55,24 +54,9 @@ const AdminSidebar = ({ isSidebarOpen }) => {
               style={{ width: "30px", height: "30px" }}
               className="m-2"
             />
-             {isSidebarOpen ? "Users": ""}
           </Link>
         </div>
-        <div>
-          <Link
-            href=""
-            className={`text-white hover:bg-[#971713] py-1
-            justify-center flex items-center w-full ${
-              isActive("") ? "border-2 border-white" : ""
-            }`}
-          >
-            <IoMdSettings
-              style={{ width: "30px", height: "30px" }}
-              className="m-2"
-            />
-             {isSidebarOpen ? "Settings": ""}
-          </Link>
-        </div>
+
         <div>
           <Link
             href="/admin/BorrowedList"
@@ -85,7 +69,6 @@ const AdminSidebar = ({ isSidebarOpen }) => {
               style={{ width: "30px", height: "30px" }}
               className="m-2"
             />
-             {isSidebarOpen ? "Borrowed Books": ""}
           </Link>
         </div>
         <div>
@@ -100,7 +83,6 @@ const AdminSidebar = ({ isSidebarOpen }) => {
               style={{ width: "30px", height: "30px" }}
               className="m-2"
             />
-             {isSidebarOpen ? "All Books": ""}
           </Link>
         </div>
         <div>
@@ -115,8 +97,21 @@ const AdminSidebar = ({ isSidebarOpen }) => {
               style={{ width: "30px", height: "30px" }}
               className="m-2"
             />
-             {isSidebarOpen ? "Queued Books": ""}
           </Link>
+          <div>
+            <Link
+              href=""
+              className={`text-white hover:bg-[#971713] py-1
+            justify-center flex items-center w-full ${
+              isActive("") ? "border-2 border-white" : ""
+            }`}
+            >
+              <IoMdSettings
+                style={{ width: "30px", height: "30px" }}
+                className="m-2"
+              />
+            </Link>
+          </div>
         </div>
       </nav>
     </div>

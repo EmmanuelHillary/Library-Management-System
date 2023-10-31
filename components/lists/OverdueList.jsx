@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Link from "next/link";
 
-const OverdueList = ({ title, users }) => {
+const OverdueList = () => {
   const [bookList, setBookList] = useState([]);
 
   useEffect(() => {
@@ -10,7 +11,7 @@ const OverdueList = ({ title, users }) => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BASE_URL}/books/getborrowedbooks`
         );
-        console.log(response);
+  
         setBookList(response.data.slice(0, 4)); // Slicing the array to display only the first 3 values
       } catch (error) {
         console.error("Error fetching book list:", error);
@@ -49,15 +50,17 @@ const OverdueList = ({ title, users }) => {
                 <td className="p-2 text-center">{user.author}</td>
                 <td className="p-2 text-center">{user.borrowDate}</td>
                 <td className="p-2 text-center">{user.returnDate}</td>
-                <td className="p-2 text-center">{user.returned === true ? "Returned" : "Not returned"}</td>
+                <td className="p-2 text-center">
+                  {user.returned === true ? "Returned" : "Not returned"}
+                </td>
               </tr>
             ))}
           </tbody>
           <tfoot>
             <tr className="bg-gray-100">
-              <td className="p-2" colSpan="6"></td>
+              <td className="p-2" colSpan="7"></td>
               <td className="p-2 text-right text-[#971713] text-[14px] font-bold">
-                See All
+                <Link href={"/admin/BorrowedList"}>See All</Link>
               </td>
             </tr>
           </tfoot>

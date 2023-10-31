@@ -8,7 +8,6 @@ const Fields = () => {
   const { data, isLoading, isError } = useGetallBooksQuery();
   const authToken = useSelector((state) => state.auth.token); // Retrieve the authToken
 
-  console.log(data)
   return (
     <div className='px-6'>
       <div className="py-10 text-[#582C83] text-xl">

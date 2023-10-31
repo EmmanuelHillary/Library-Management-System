@@ -34,8 +34,9 @@ const dummyData = [
   },
 ];
 
-const TotalList = ({ title, users }) => {
+const TotalList = () => {
   const [totalList, setTotalList] = useState([]);
+  const [originalUserList, setOriginalUserList] = useState([]);
 
   useEffect(() => {
     const fetchBookList = async () => {
@@ -43,7 +44,7 @@ const TotalList = ({ title, users }) => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BASE_URL}/books/getallbooks`
         );
-        console.log(response);
+        setOriginalUserList(response.data);
         setTotalList(response.data);
       } catch (error) {
         console.error("Error fetching book list:", error);
@@ -51,6 +52,18 @@ const TotalList = ({ title, users }) => {
     };
     fetchBookList();
   }, []);
+
+  const handleSearch = (searchText) => {
+    if (searchText === "") {
+      setTotalList(originalUserList);
+    } else {
+      // Perform the search logic based on the searchText
+      const filteredUsers = originalUserList.filter((title) =>
+      title.title.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setTotalList(filteredUsers);
+    }
+  };
 
   return (
     <AdminLayout title="Database">
@@ -124,7 +137,7 @@ const TotalList = ({ title, users }) => {
             <h1 className="text-[16px] md:text-[32px] font-outfit">
               Total Book List
             </h1>
-            <SearchBar />
+            <SearchBar onSearch={handleSearch}/>
             <button className="bg-[#E4E3E3] text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit">
               Sort by
             </button>
@@ -159,7 +172,7 @@ const TotalList = ({ title, users }) => {
             </tbody>
             <tfoot>
               <tr className="bg-gray-100">
-                <td className="p-2" colSpan="3"></td>
+                <td className="p-2" colSpan="4"></td>
                 <td className="p-2 text-right text-[#971713] text-[14px] font-bold">
                   See All
                 </td>

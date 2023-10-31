@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 const FeatureCards = ({ background, imagePath, bodyText, headerText }) => {
-  console.log(background);
+
   return (
     <div
       style={{ backgroundColor: `${background}` }}

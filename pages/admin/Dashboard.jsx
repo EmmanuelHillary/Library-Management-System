@@ -52,7 +52,6 @@ const Dashboard = () => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BASE_URL}/users/gettotalusers`
         );
-        console.log(response);
         setTotalUsers(response.data);
       } catch (error) {
         console.error("Error fetching total users:", error);
