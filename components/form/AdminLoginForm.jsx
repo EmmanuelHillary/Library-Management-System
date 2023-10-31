@@ -42,7 +42,7 @@ const AdminLoginForm = () => {
 
     } catch (error) {
 
-      setError(error.data.message ?? "Failed to login, please try again");
+      setError(error?.data?.message ?? "Failed to login, please try again");
     }
   };
 
