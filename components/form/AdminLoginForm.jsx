@@ -58,12 +58,12 @@ const AdminLoginForm = () => {
         <h1 className="text-[48px] text-center font-bold hidden md:block font-clash relative text-white font-outfit">
           Log in
         </h1>
-        <h1 className="text-[20px] md:text-[24px] pt-4 pb-8 text-center relative text-white font-outfit">
+        {/* <h1 className="text-[20px] md:text-[24px] pt-4 pb-8 text-center relative text-white font-outfit">
           Don’t have a user account?{" "}
           <Link href={"/authentication/Signup"} className="text-[#971713]">
             Create an account
           </Link>
-        </h1>
+        </h1> */}
         <div className="py-2 text-[13px] md:text-[14px] flex md:flex-row flex-col justify-between items-center gap-2 md:gap-8">
           <div className="flex flex-col items-start relative w-full z-10">
             <input
@@ -74,7 +74,7 @@ const AdminLoginForm = () => {
               onChange={handleChange}
               className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A] font-outfit"
               required
-              placeholder="Enter your User name"
+              placeholder="Enter your Email"
             />
           </div>
         </div>
