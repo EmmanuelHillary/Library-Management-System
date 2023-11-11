@@ -22,7 +22,7 @@ const BookComponent = ({ title, author, image, id, authToken, book }) => {
       })
       .catch((error) => {
         console.error('Error borrowing the book:', error);
-        alert('An error occurred while borrowing the book. Please try again later.');
+        alert('This book is not currently available , you would be added to the Queue List');
       });
   };
 

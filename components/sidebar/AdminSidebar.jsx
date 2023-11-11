@@ -99,7 +99,7 @@ const AdminSidebar = ({ isSidebarOpen }) => {
             />
           </Link>
           <div>
-            <Link
+            {/* <Link
               href=""
               className={`text-white hover:bg-[#971713] py-1
             justify-center flex items-center w-full ${
@@ -110,7 +110,7 @@ const AdminSidebar = ({ isSidebarOpen }) => {
                 style={{ width: "30px", height: "30px" }}
                 className="m-2"
               />
-            </Link>
+            </Link> */}
           </div>
         </div>
       </nav>

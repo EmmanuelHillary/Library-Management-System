@@ -55,10 +55,6 @@ const Intro = () => {
             All Categories
           </button>
         </div>
-        <button className="bg-[#582C83] text-white py-4 px-8 rounded-full inline-flex items-center gap-3">
-          My Queue
-          <BsCart4 />
-        </button>
       </div>
 
       <div className="flex items-center justify-center gap-8 mt-10 mx-auto w-full">
