@@ -11,7 +11,7 @@ import { setToken, setUser } from "@/app/slices/authSlice";
 const LoginForm = () => {
   const router = useRouter();
   const [loginData, setLoginData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
   const [rememberMe, setRememberMe] = useState(false);
@@ -37,7 +37,7 @@ const LoginForm = () => {
       const res = await login(loginData).unwrap();
     
       dispatch(setToken(res.access_token));
-      dispatch(setUser(loginData.username));
+      dispatch(setUser(loginData.email));
       router.push("/user/dashboard");
 
     } catch (error) {
@@ -68,13 +68,13 @@ const LoginForm = () => {
           <div className="flex flex-col items-start relative w-full z-10">
             <input
               type="text"
-              id="username"
-              name="username"
-              value={loginData.username}
+              id="email"
+              name="email"
+              value={loginData.email}
               onChange={handleChange}
               className="p-4  pl-6  mt-4 w-full text-white text-[20px] rounded-3xl bg-[#5A5A5A] font-outfit"
               required
-              placeholder="Enter your User name"
+              placeholder="Enter your Email"
             />
           </div>
         </div>
