@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 const AdminNavbar = ({ toggleSidebar, title }) => {
   const {user: name} = useSelector((state) => state.auth);
+  localStorage.setItem("name", name)
   return (
     <div className="flex justify-between items-center bg-white shadow-custom p-4">
       <div className="flex items-center">
