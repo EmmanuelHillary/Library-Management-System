@@ -3,27 +3,38 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { RxDashboard } from "react-icons/rx";
-import { IoMdSettings } from "react-icons/io";
+import { IoMdLogOut } from "react-icons/io";
 import { BsFillCalendarWeekFill } from "react-icons/bs";
+import { SiBookstack } from "react-icons/si";
 import { HiUsers } from "react-icons/hi2";
 import { ImBooks } from "react-icons/im";
-import logo from "../../public/sidebar/logo.png";
+import { BiSolidBookAdd } from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "@/app/slices/authSlice";
+import Logo from "../../public/logo.png";
 
 const AdminSidebar = ({ isSidebarOpen }) => {
+  const token = useSelector((state) => state.token);
+  console.log(token);
+  const dispatch = useDispatch();
   const router = useRouter();
 
   const isActive = (href) => {
     return router.pathname === href;
   };
+  const handleLogout = () => {
+    dispatch(logout());
+    router.push("/"); // Redirect to the homepage
+  };
 
   return (
     <div
-      className={`fixed lg:relative h-full w-3/4 lg:w-[100px] bg-[#971713] text-white transition-transform duration-300 transform z-50 ${
+      className={`fixed lg:relative h-full w-3/4 lg:w-auto bg-[#971713] border-r-2 border-white text-white transition-transform duration-300 transform z-50 ${
         isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       }`}
     >
-      <div className="flex justify-center">
-        <Image className="my-4" src={logo} alt="logo" />
+      <div className="flex justify-center bg-white">
+        <Image className="py-4   " src={Logo} alt="logo" />
       </div>
       <hr className="w-full border-t border-white mb-4"></hr>
       <div className="mb-4"></div>
@@ -31,7 +42,7 @@ const AdminSidebar = ({ isSidebarOpen }) => {
         <div>
           <Link
             href="/admin/Dashboard"
-            className={`text-white hover:bg-[#971713] py-1
+            className={`text-white hover:bg-[#971713] py-1 px-2
             justify-center flex items-center w-full ${
               isActive("/admin/Dashboard") ? "border-2 border-white" : ""
             }`}
@@ -40,12 +51,13 @@ const AdminSidebar = ({ isSidebarOpen }) => {
               style={{ width: "30px", height: "30px" }}
               className="m-2"
             />
+            <span className="hidden lg:inline">Dashboard</span>
           </Link>
         </div>
         <div>
           <Link
             href="/admin/UserList"
-            className={`text-white hover:bg-[#971713] py-1
+            className={`text-white hover:bg-[#971713] py-1 px-2
             justify-center flex items-center w-full ${
               isActive("/admin/UserList") ? "border-2 border-white" : ""
             }`}
@@ -54,13 +66,14 @@ const AdminSidebar = ({ isSidebarOpen }) => {
               style={{ width: "30px", height: "30px" }}
               className="m-2"
             />
+            <span className="hidden lg:inline">Users</span>
           </Link>
         </div>
 
         <div>
           <Link
             href="/admin/BorrowedList"
-            className={`text-white  hover:bg-[#971713] py-1
+            className={`text-white  hover:bg-[#971713] py-1 px-2
             justify-center flex items-center w-full ${
               isActive("/admin/BorrowedList") ? " border-2 border-white" : ""
             }`}
@@ -69,26 +82,28 @@ const AdminSidebar = ({ isSidebarOpen }) => {
               style={{ width: "30px", height: "30px" }}
               className="m-2"
             />
+            <span className="hidden lg:inline">Borrowed Books</span>
           </Link>
         </div>
         <div>
           <Link
             href="/admin/TotalList"
-            className={`text-white  hover:bg-[#971713] py-1
+            className={`text-white  hover:bg-[#971713] py-1 px-2
             justify-center flex items-center w-full ${
               isActive("/admin/TotalList") ? " border-2 border-white" : ""
             }`}
           >
-            <ImBooks
+            <SiBookstack
               style={{ width: "30px", height: "30px" }}
               className="m-2"
             />
+            <span className="hidden lg:inline">Popular Books</span>
           </Link>
         </div>
         <div>
           <Link
             href="/admin/QueuedList"
-            className={`text-white  hover:bg-[#971713] py-1
+            className={`text-white  hover:bg-[#971713] py-1 px-2
             justify-center flex items-center w-full ${
               isActive("/admin/QueuedList") ? "border-2 border-white" : ""
             }`}
@@ -97,21 +112,35 @@ const AdminSidebar = ({ isSidebarOpen }) => {
               style={{ width: "30px", height: "30px" }}
               className="m-2"
             />
+            <span className="hidden lg:inline">Book Queue</span>
           </Link>
-          <div>
-            {/* <Link
-              href=""
-              className={`text-white hover:bg-[#971713] py-1
-            justify-center flex items-center w-full ${
-              isActive("") ? "border-2 border-white" : ""
+        </div>
+        <div>
+          <Link
+            href="/admin/AddBook"
+            className={`text-white hover.bg-[#971713] py-1 px-2 justify-center flex items-center w-full ${
+              isActive("/admin/AddBook") ? "border-2 border-white" : ""
             }`}
-            >
-              <IoMdSettings
-                style={{ width: "30px", height: "30px" }}
-                className="m-2"
-              />
-            </Link> */}
-          </div>
+          >
+            <BiSolidBookAdd
+              style={{ width: "30px", height: "30px" }}
+              className="m-2"
+            />
+            <span className="hidden lg:inline">Add Book</span>
+          </Link>
+        </div>
+        <div>
+          <a
+            onClick={handleLogout}
+            className={`text-white hover:bg-[#971713] py-1 px-2
+          justify-center flex items-center w-full`}
+          >
+            <IoMdLogOut
+              style={{ width: "30px", height: "30px" }}
+              className="m-2"
+            />
+            <span className="hidden lg:inline">Logout</span>
+          </a>
         </div>
       </nav>
     </div>

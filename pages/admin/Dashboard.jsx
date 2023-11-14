@@ -6,6 +6,7 @@ import SmallUserList from "@/components/lists/SmallUserList";
 import SmallBookList from "@/components/lists/SmallBookList";
 import { BsFillCalendarWeekFill } from "react-icons/bs";
 import { HiUsers } from "react-icons/hi2";
+import { SiBookstack } from "react-icons/si";
 import { ImBooks } from "react-icons/im";
 import Dummy from "../../public/books/dummy2.png";
 import Image from "next/image";
@@ -113,12 +114,12 @@ const Dashboard = () => {
   const cardData = [
     {
       number: totalUsers,
-      icon: ImBooks,
+      icon: HiUsers,
       title: "Total Registered Users",
     },
     {
       number: totalBooks,
-      icon: ImBooks,
+      icon: SiBookstack,
       title: "Total Books",
     },
     {
@@ -128,7 +129,7 @@ const Dashboard = () => {
     },
     {
       number: totalOverBooks,
-      icon: BsFillCalendarWeekFill,
+      icon: ImBooks,
       title: "Overdue Books",
     },
   ];
