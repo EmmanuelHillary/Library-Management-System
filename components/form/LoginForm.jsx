@@ -39,10 +39,15 @@ const LoginForm = () => {
       dispatch(setToken(res.access_token));
       dispatch(setUser(loginData.email));
       router.push("/user/dashboard");
+      if (res.access_token) {
+        const decoded = jwtDecode(res.access_token);
+        console.log(decoded);
+        localStorage.setItem("username", decoded.name);
+      }
 
     } catch (error) {
   
-      setError(error.data.message ?? "Failed to login, please try again");
+      setError(error.message ?? "Failed to login, please try again");
     }
   };
 

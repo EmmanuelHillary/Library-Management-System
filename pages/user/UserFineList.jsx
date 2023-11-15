@@ -36,9 +36,6 @@ const UserFineList = () => {
             <h1 className="text-[16px] md:text-[32px] font-outfit">
               Fine List
             </h1>
-            <button className="bg-[#E4E3E3] text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit">
-              Sort by
-            </button>
           </div>
           {!userList ? (
             <h1 className="text-center text-[16px] font-outfit mt-4 p-8">

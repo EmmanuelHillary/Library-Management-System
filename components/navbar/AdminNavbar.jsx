@@ -2,10 +2,28 @@ import React, { useState, useEffect } from "react";
 import profile from "../../public/user.png";
 import Image from "next/image";
 import { useSelector } from "react-redux";
+import { jwtDecode } from "jwt-decode";
 
 const AdminNavbar = ({ toggleSidebar, title }) => {
-  const {user: name} = useSelector((state) => state.auth);
-  localStorage.setItem("name", name)
+  const [name, setName] = useState('')
+  const token = useSelector((state) => state.auth.token);
+  console.log(token);
+  if (token) {
+    const decoded = jwtDecode(token);
+    console.log(decoded);
+    localStorage.setItem("name", decoded.name);
+  }
+
+  useEffect(() => {
+    // Get item from local storage
+    const storedName = localStorage.getItem("name");
+
+    // Update the state with the retrieved name
+    if (storedName) {
+      setName(storedName);
+    }
+  }, []);
+
   return (
     <div className="flex justify-between items-center bg-white shadow-custom p-4">
       <div className="flex items-center">

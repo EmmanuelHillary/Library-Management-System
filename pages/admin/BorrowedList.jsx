@@ -59,14 +59,12 @@ const BorrowedList = () => {
               Borrowed List
             </h1>
             <button
-              className="bg-green-500 text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit"
+              className="bg-green-500 text-[12px] md:text-[16px] px-6  text-white py-2 font-outfit"
               onClick={generateReport}
             >
               Generate Report
             </button>
-            <button className="bg-[#E4E3E3] text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit">
-              Sort by
-            </button>
+
           </div>
           <table className="w-full font-outfit">
             <thead>

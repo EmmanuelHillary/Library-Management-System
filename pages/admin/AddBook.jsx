@@ -13,17 +13,36 @@ const AddBook = () => {
     department: "",
   });
 
+  const [imageUrlError, setImageUrlError] = useState("");
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setBookData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+
+    // Clear image URL error when user starts typing again
+    if (name === "imageUrl") {
+      setImageUrlError("");
+    }
+  };
+
+  const isValidImageUrl = (url) => {
+    // Simple URL validation using a regular expression
+    const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+    return urlRegex.test(url);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(bookData);
+
+    // Validate image URL
+    if (!isValidImageUrl(bookData.imageUrl)) {
+      setImageUrlError("Please enter a valid image URL");
+      return;
+    }
+
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/books/createbook`,
@@ -38,12 +57,15 @@ const AddBook = () => {
         }
       );
       if (response.status === 201) {
+        alert("Book Added Successfully");
         console.log("Book added successfully!");
       } else {
         console.error("Failed to add book");
+        alert("Book Failed to add");
       }
     } catch (error) {
       console.error("Error:", error);
+      alert("Book Failed to add");
     }
   };
 
@@ -100,6 +122,9 @@ const AddBook = () => {
             placeholder="Image URL"
             className="py-2 px-4 border border-gray-300 rounded-md"
           />
+          {imageUrlError && (
+            <span className="text-red-500 text-sm">{imageUrlError}</span>
+          )}
 
           {/* Department */}
           <input

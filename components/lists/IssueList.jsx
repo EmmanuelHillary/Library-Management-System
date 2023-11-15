@@ -50,15 +50,6 @@ const IssueList = () => {
                       justifyContent: "center",
                     }}
                   >
-                    <Image
-                      src={Dummy}
-                      alt="User Image"
-                      style={{
-                        width: "32px",
-                        height: "40px",
-                        marginRight: "10px",
-                      }}
-                    />
                     <div>
                       <h1
                         style={{

@@ -95,7 +95,7 @@ const TotalList = () => {
         <div className="overflow-y-scroll bg-white rounded-lg shadow-md ">
           <div className="p-4">
             <h1 className="text-[16px] md:text-[32px] font-outfit pb-4">
-              Popular this week
+              Popular Books
             </h1>
             <div className="flex flex-row items-center overflow-scroll w-full gap-8 ">
               {dummyData.map((data, index) => {
@@ -164,13 +164,10 @@ const TotalList = () => {
               Total Book List
             </h1>
             <button
-              className="bg-green-500 text-[12px] md:text-[16px] px-4 text-white font-outfit"
+              className="bg-green-500 text-[12px] md:text-[16px] px-6  text-white py-2 font-outfit"
               onClick={generateReport}
             >
               Generate Report
-            </button>
-            <button className="bg-[#E4E3E3] text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit">
-              Sort by
             </button>
           </div>
           <table className="w-full font-outfit">

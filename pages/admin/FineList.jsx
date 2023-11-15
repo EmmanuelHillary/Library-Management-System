@@ -45,9 +45,6 @@ const FineList = () => {
               Fine List
             </h1>
             <SearchBar onSearch={handleSearch} />
-            <button className="bg-[#E4E3E3] text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit">
-              Sort by
-            </button>
           </div>
           <table className="w-full font-outfit">
             <thead>

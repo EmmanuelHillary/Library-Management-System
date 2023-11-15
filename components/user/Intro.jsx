@@ -36,6 +36,17 @@ const Intro = () => {
     }
   };
 
+  const [name, setName] = useState('')
+
+  useEffect(() => {
+    // Get item from local storage
+    const storedName = localStorage.getItem("username");
+
+  
+    if (storedName) {
+      setName(storedName);
+    }
+  }, []);
   return (
     <div className='w-full bg-pink-800  py-4 px-6' style={{ backgroundImage: "url(/hero.png)", backgroundSize: "cover" }}>
       <div className="flex items-center gap-0 w-full max-w-[900px] mx-auto">
@@ -69,7 +80,7 @@ const Intro = () => {
 
       <div className="text-2xl md:text-[40px] text-[#EAAA00] font-medium">
         Hello{" "}
-        <span className=''>{user}!</span>
+        <span className=''>{name}!</span>
       </div>
       <div className="pt-4 pb-32 text-white text-xl md:text-2xl max-w-[300px]">
         {searchQuery ? `You searched for: ${searchQuery}` : 'Selection of the best books just for you'}
