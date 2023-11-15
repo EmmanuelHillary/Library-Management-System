@@ -6,7 +6,7 @@ import SearchBar from "@/components/inputs/SearchBar";
 import axios from "axios";
 import Footer from "@/components/footer/Footer";
 
-const UserList = () => {
+const FineList = () => {
   const [userList, setUserList] = useState([]);
   const [originalUserList, setOriginalUserList] = useState([]);
 
@@ -14,10 +14,10 @@ const UserList = () => {
     const fetchUserList = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/users/getallusers`
+          `${process.env.NEXT_PUBLIC_BASE_URL}/books/allfines`
         );
-        setOriginalUserList(response.data);
-        setUserList(response.data);
+        setOriginalUserList(response.data.fines);
+        setUserList(response.data.fines);
       } catch (error) {
         console.error("Error fetching user list:", error);
       }
@@ -31,7 +31,7 @@ const UserList = () => {
     } else {
       // Perform the search logic based on the searchText
       const filteredUsers = originalUserList.filter((user) =>
-        user.username.toLowerCase().includes(searchText.toLowerCase())
+        user.user.toLowerCase().includes(searchText.toLowerCase())
       );
       setUserList(filteredUsers);
     }
@@ -42,7 +42,7 @@ const UserList = () => {
         <div className="overflow-y-scroll bg-white rounded-lg shadow-md ">
           <div className="flex justify-between px-2 md:px-12 py-4 items-center w-full">
             <h1 className="text-[16px] md:text-[32px] font-outfit">
-              User List
+              Fine List
             </h1>
             <SearchBar onSearch={handleSearch} />
             <button className="bg-[#E4E3E3] text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit">
@@ -52,10 +52,10 @@ const UserList = () => {
           <table className="w-full font-outfit">
             <thead>
               <tr className="bg-gray-100">
-                <th className="p-2 text-left">User Name</th>
-                <th className="p-2 text-left">ID</th>
-                <th className="p-2 text-left">Department</th>
-                <th className="p-2 text-left">Email Address</th>
+                <th className="p-2 text-left">User</th>
+                <th className="p-2 text-left">Book ID</th>
+                <th className="p-2 text-left">Book Name</th>
+                <th className="p-2 text-left">Amount</th>
               </tr>
             </thead>
             <tbody>
@@ -87,14 +87,15 @@ const UserList = () => {
                             textAlign: "left",
                           }}
                         >
-                          {user.username}
+                          {user.user}
                         </h1>
                       </div>
                     </div>
                   </td>
-                  <td className="p-2">{user.userid}</td>
-                  <td className="p-2">{user.department}</td>
-                  <td className="p-2">{user.email}</td>
+                  <td className="p-2">{user._id}</td>
+                  <td className="p-2">{user.book}</td>
+                  <td className="p-2">${user.fineAmount}</td>
+                  
                 </tr>
               ))}
             </tbody>
@@ -106,4 +107,4 @@ const UserList = () => {
   );
 };
 
-export default UserList;
+export default FineList;

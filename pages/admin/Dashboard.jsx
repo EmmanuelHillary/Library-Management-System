@@ -4,11 +4,12 @@ import AdminLayout from "@/components/layout/AdminLayout";
 import DashboardCard from "@/components/cards/DashboardCard";
 import SmallUserList from "@/components/lists/SmallUserList";
 import SmallBookList from "@/components/lists/SmallBookList";
+import SmallFineList from "@/components/lists/SmallFineList";
 import { BsFillCalendarWeekFill } from "react-icons/bs";
 import { HiUsers } from "react-icons/hi2";
 import { SiBookstack } from "react-icons/si";
 import { ImBooks } from "react-icons/im";
-import Dummy from "../../public/books/dummy2.png";
+import { MdAttachMoney } from "react-icons/md";
 import Image from "next/image";
 import OverdueList from "@/components/lists/OverdueList";
 import IssueList from "@/components/lists/IssueList";
@@ -16,23 +17,12 @@ import { useState, useEffect } from "react";
 import PieChart from "@/components/lists/PieChart";
 import Footer from "@/components/footer/Footer";
 
-const Book = [
-  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
-  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
-  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
-  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
-  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
-  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
-  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
-  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
-  { title: "Book Title", department: "Book Description", imageUrl: Dummy },
-];
-
 const Dashboard = () => {
   const [totalUsers, setTotalUsers] = useState(0);
   const [totalBooks, setTotalBooks] = useState(0);
   const [totalBorrowedBooks, setTotalBorrowedBooks] = useState(0);
   const [totalOverBooks, setTotalOverBooks] = useState(0);
+  const [fine, setFine] = useState(0);
   const [books, setBooks] = useState([]);
 
   const [name, setName] = useState("");
@@ -103,12 +93,23 @@ const Dashboard = () => {
       }
     };
 
+    const fetchTotalFines = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/books/totalfines`
+        );
+        setFine(response.data.totalFineAmount);
+      } catch (error) {
+        console.error("Error fetching total books:", error);
+      }
+    };
+
     fetchTotalOverdueBooks();
     fetchTotalBorrowedBooks();
     fetchTotalBooks();
     fetchTotalUsers();
     fetchBooks();
-
+    fetchTotalFines();
   }, []);
 
   const cardData = [
@@ -131,6 +132,11 @@ const Dashboard = () => {
       number: totalOverBooks,
       icon: ImBooks,
       title: "Overdue Books",
+    },
+    {
+      number: fine,
+      icon: MdAttachMoney,
+      title: "Total Book Fines",
     },
   ];
 
@@ -158,6 +164,7 @@ const Dashboard = () => {
         <div className="flex flex-col md:flex-row gap-12 overflow-x-scroll w-full">
           <SmallUserList />
           <SmallBookList />
+          <SmallFineList />
         </div>
         <div className="">
           <h1 className="py-8 text-[28px] font-outfit">Top Choices</h1>
@@ -165,7 +172,13 @@ const Dashboard = () => {
             {books.map((book, index) => {
               return (
                 <div className="min-w-[176px] mr-12" key={index}>
-                  <Image loader={() => book.imageUrl} src={book.imageUrl} alt="book imageUrl" width={176} height={100} />
+                  <Image
+                    loader={() => book.imageUrl}
+                    src={book.imageUrl}
+                    alt="book imageUrl"
+                    width={176}
+                    height={100}
+                  />
                   <h1 className="text-[18px] font-outfit text-center">
                     {book.title}
                   </h1>

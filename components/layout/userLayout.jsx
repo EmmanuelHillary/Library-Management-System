@@ -12,7 +12,7 @@ const UserLayout = ({ children }) => {
     <div className="flex h-screen">
       <UserSidebar isSidebarOpen={isSidebarOpen} />
       <div className="flex-1 flex flex-col w-3/4 lg:w-5/6">
-        <UserNavbar  toggleSidebar={toggleSidebar} title={"Discover"} />
+        <UserNavbar  toggleSidebar={toggleSidebar} />
         <div className="flex-1 bg-[#DED6E1] overflow-y-auto">
           {children}
         </div>

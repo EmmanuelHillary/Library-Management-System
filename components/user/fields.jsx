@@ -6,7 +6,7 @@ import BookComponent from './book-component';
 
 const Fields = () => {
   const { data, isLoading, isError } = useGetallBooksQuery();
-  const authToken = useSelector((state) => state.auth.token); // Retrieve the authToken'
+  const authToken = useSelector((state) => state.auth.token);
   const [books, setBooks] = useState([])
 
   useEffect(()=>{

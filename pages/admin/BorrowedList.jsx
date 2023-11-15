@@ -25,15 +25,28 @@ const BorrowedList = () => {
     fetchBookList();
   }, []);
 
-  const handleSearch = (searchText) => {
-    if (searchText === "") {
-      setBorrowedList(originalUserList);
-    } else {
-      // Perform the search logic based on the searchText
-      const filteredUsers = originalUserList.filter((user) =>
-        user.username.toLowerCase().includes(searchText.toLowerCase())
+  const generateReport = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/books/all-borrowed-books-report`,
+        {
+          responseType: "blob",
+        }
       );
-      setBorrowedList(filteredUsers);
+
+      const blob = new Blob([response.data], {
+        type: response.headers["content-type"],
+      });
+
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "all_borrowed_books.xlsx";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error("Error generating report:", error);
     }
   };
 
@@ -41,9 +54,16 @@ const BorrowedList = () => {
     <AdminLayout title="Database">
       <div className="w-full mt-8 p-8">
         <div className="overflow-y-scroll bg-white rounded-lg shadow-md ">
-        <div className="flex justify-between px-2 md:px-12 py-4 items-center w-full">
-            <h1 className="text-[16px] md:text-[32px] font-outfit">Borrow List</h1>
-            <SearchBar onSearch={handleSearch}/>
+          <div className="flex justify-between px-2 md:px-12 py-4 items-center w-full">
+            <h1 className="text-[16px] md:text-[32px] font-outfit">
+              Borrowed List
+            </h1>
+            <button
+              className="bg-[#E4E3E3] text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit"
+              onClick={generateReport}
+            >
+              Generate Report
+            </button>
             <button className="bg-[#E4E3E3] text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit">
               Sort by
             </button>
@@ -102,19 +122,15 @@ const BorrowedList = () => {
                   <td className="p-2">{user.author}</td>
                   <td className="p-2">{user.borrowDate}</td>
                   <td className="p-2">{user.returnDate}</td>
-                  <td className="p-2">{user.overdue === true ? "overdue" : "Not overdue"}</td>
-                  <td className="p-2">{user.returned === true ? "Returned" : "Not returned"}</td>
+                  <td className="p-2">
+                    {user.overdue === true ? "overdue" : "Not overdue"}
+                  </td>
+                  <td className="p-2">
+                    {user.returned === true ? "Returned" : "Not returned"}
+                  </td>
                 </tr>
               ))}
             </tbody>
-            <tfoot>
-              <tr className="bg-gray-100">
-                <td className="p-2" colSpan="8"></td>
-                <td className="p-2 text-right text-[#971713] text-[14px] font-bold">
-                  See All
-                </td>
-              </tr>
-            </tfoot>
           </table>
         </div>
       </div>

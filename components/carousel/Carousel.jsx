@@ -35,6 +35,8 @@ function Carousel() {
                 <Image
                   src={Author}
                   alt="hero picture"
+                  width={32}
+                  height={32}
                 />
                   <div className="absolute bottom-8 p-4">
                   {" "}

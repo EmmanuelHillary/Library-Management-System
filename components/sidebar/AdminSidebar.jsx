@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { RxDashboard } from "react-icons/rx";
 import { IoMdLogOut } from "react-icons/io";
+import { MdAttachMoney } from "react-icons/md";
 import { BsFillCalendarWeekFill } from "react-icons/bs";
 import { SiBookstack } from "react-icons/si";
 import { HiUsers } from "react-icons/hi2";
@@ -14,8 +15,6 @@ import { logout } from "@/app/slices/authSlice";
 import Logo from "../../public/logo.png";
 
 const AdminSidebar = ({ isSidebarOpen }) => {
-  const token = useSelector((state) => state.token);
-  console.log(token);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -38,13 +37,13 @@ const AdminSidebar = ({ isSidebarOpen }) => {
       </div>
       <hr className="w-full border-t border-white mb-4"></hr>
       <div className="mb-4"></div>
-      <nav className="w-full flex flex-col items-center gap-8">
+      <nav className="w-full flex flex-col justify-start text-left items-start gap-8">
         <div>
           <Link
             href="/admin/Dashboard"
             className={`text-white hover:bg-[#971713] py-1 px-2
             justify-center flex items-center w-full ${
-              isActive("/admin/Dashboard") ? "border-2 border-white" : ""
+              isActive("/admin/Dashboard") ? "border-l-8 border-white" : ""
             }`}
           >
             <RxDashboard
@@ -59,7 +58,7 @@ const AdminSidebar = ({ isSidebarOpen }) => {
             href="/admin/UserList"
             className={`text-white hover:bg-[#971713] py-1 px-2
             justify-center flex items-center w-full ${
-              isActive("/admin/UserList") ? "border-2 border-white" : ""
+              isActive("/admin/UserList") ? "border-l-8 border-white" : ""
             }`}
           >
             <HiUsers
@@ -75,7 +74,7 @@ const AdminSidebar = ({ isSidebarOpen }) => {
             href="/admin/BorrowedList"
             className={`text-white  hover:bg-[#971713] py-1 px-2
             justify-center flex items-center w-full ${
-              isActive("/admin/BorrowedList") ? " border-2 border-white" : ""
+              isActive("/admin/BorrowedList") ? "border-l-8 border-white" : ""
             }`}
           >
             <BsFillCalendarWeekFill
@@ -90,7 +89,7 @@ const AdminSidebar = ({ isSidebarOpen }) => {
             href="/admin/TotalList"
             className={`text-white  hover:bg-[#971713] py-1 px-2
             justify-center flex items-center w-full ${
-              isActive("/admin/TotalList") ? " border-2 border-white" : ""
+              isActive("/admin/TotalList") ? "border-l-8 border-white" : ""
             }`}
           >
             <SiBookstack
@@ -105,7 +104,7 @@ const AdminSidebar = ({ isSidebarOpen }) => {
             href="/admin/QueuedList"
             className={`text-white  hover:bg-[#971713] py-1 px-2
             justify-center flex items-center w-full ${
-              isActive("/admin/QueuedList") ? "border-2 border-white" : ""
+              isActive("/admin/QueuedList") ? "border-l-8 border-white" : ""
             }`}
           >
             <ImBooks
@@ -115,11 +114,28 @@ const AdminSidebar = ({ isSidebarOpen }) => {
             <span className="hidden lg:inline">Book Queue</span>
           </Link>
         </div>
+
+        <div>
+          <Link
+            href="/admin/FineList"
+            className={`text-white  hover:bg-[#971713] py-1 px-2
+            justify-center flex items-center w-full ${
+              isActive("/admin/FineList") ? "border-l-8 border-white" : ""
+            }`}
+          >
+            <MdAttachMoney
+              style={{ width: "30px", height: "30px" }}
+              className="m-2"
+            />
+            <span className="hidden lg:inline">Fine List</span>
+          </Link>
+        </div>
+
         <div>
           <Link
             href="/admin/AddBook"
             className={`text-white hover.bg-[#971713] py-1 px-2 justify-center flex items-center w-full ${
-              isActive("/admin/AddBook") ? "border-2 border-white" : ""
+              isActive("/admin/AddBook") ? "border-l-8 border-white" : ""
             }`}
           >
             <BiSolidBookAdd

@@ -129,14 +129,7 @@ const QueuedList = () => {
                 </tr>
               ))}
             </tbody>
-            <tfoot>
-              <tr className="bg-gray-100">
-                <td className="p-2" colSpan="3"></td>
-                <td className="p-2 text-right text-[#971713] text-[14px] font-bold">
-                  See All
-                </td>
-              </tr>
-            </tfoot>
+           
           </table>
         </div>
       </div>
