@@ -59,7 +59,7 @@ const BorrowedList = () => {
               Borrowed List
             </h1>
             <button
-              className="bg-[#E4E3E3] text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit"
+              className="bg-green-500 text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit"
               onClick={generateReport}
             >
               Generate Report

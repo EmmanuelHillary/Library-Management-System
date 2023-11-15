@@ -59,18 +59,44 @@ const TotalList = () => {
     } else {
       // Perform the search logic based on the searchText
       const filteredUsers = originalUserList.filter((title) =>
-      title.title.toLowerCase().includes(searchText.toLowerCase())
+        title.title.toLowerCase().includes(searchText.toLowerCase())
       );
       setTotalList(filteredUsers);
     }
   };
 
+  const generateReport = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/books/all-books-report`,
+        {
+          responseType: "blob",
+        }
+      );
+
+      const blob = new Blob([response.data], {
+        type: response.headers["content-type"],
+      });
+
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "all_books.xlsx";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error("Error generating report:", error);
+    }
+  };
   return (
     <AdminLayout title="Database">
       <div className="w-full mt-8 p-8">
         <div className="overflow-y-scroll bg-white rounded-lg shadow-md ">
           <div className="p-4">
-            <h1 className="text-[16px] md:text-[32px] font-outfit pb-4">Popular this week</h1>
+            <h1 className="text-[16px] md:text-[32px] font-outfit pb-4">
+              Popular this week
+            </h1>
             <div className="flex flex-row items-center overflow-scroll w-full gap-8 ">
               {dummyData.map((data, index) => {
                 return (
@@ -137,7 +163,12 @@ const TotalList = () => {
             <h1 className="text-[16px] md:text-[32px] font-outfit">
               Total Book List
             </h1>
-            <SearchBar onSearch={handleSearch}/>
+            <button
+              className="bg-green-500 text-[12px] md:text-[16px] px-4 text-white font-outfit"
+              onClick={generateReport}
+            >
+              Generate Report
+            </button>
             <button className="bg-[#E4E3E3] text-[12px] md:text-[16px] px-4 text-[#9B9B9B] font-outfit">
               Sort by
             </button>
