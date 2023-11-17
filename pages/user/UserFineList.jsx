@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 const UserFineList = () => {
   const [userList, setUserList] = useState([]);
   const user = useSelector((state) => state.auth.user);
-  console.log(user);
+
 
   useEffect(() => {
     const fetchUserList = async () => {
@@ -19,7 +19,7 @@ const UserFineList = () => {
           `${process.env.NEXT_PUBLIC_BASE_URL}/books/fines/${user}`
         );
         console.log(response);
-        setUserList(response.data.fines);
+        setUserList(response.data);
       } catch (error) {
         console.error("Error fetching user list:", error);
       }

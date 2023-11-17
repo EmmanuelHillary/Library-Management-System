@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useLoginUserMutation } from "@/app/apiSlices/auth";
 import { useDispatch } from "react-redux";
 import { setToken, setUser } from "@/app/slices/authSlice";
+import { jwtDecode } from "jwt-decode";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -35,18 +36,18 @@ const LoginForm = () => {
     if (isLoading) return;
     try {
       const res = await login(loginData).unwrap();
-    
-      dispatch(setToken(res.access_token));
-      dispatch(setUser(loginData.email));
-      router.push("/user/dashboard");
-      if (res.access_token) {
+      console.log(res)
+      if (res) {
         const decoded = jwtDecode(res.access_token);
         console.log(decoded);
         localStorage.setItem("username", decoded.name);
       }
+      dispatch(setToken(res.access_token));
+      dispatch(setUser(loginData.email));
+      router.push("/user/dashboard");
+      
 
     } catch (error) {
-  
       setError(error.message ?? "Failed to login, please try again");
     }
   };

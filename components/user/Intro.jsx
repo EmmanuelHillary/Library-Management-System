@@ -39,10 +39,7 @@ const Intro = () => {
   const [name, setName] = useState('')
 
   useEffect(() => {
-    // Get item from local storage
     const storedName = localStorage.getItem("username");
-
-  
     if (storedName) {
       setName(storedName);
     }
@@ -79,8 +76,8 @@ const Intro = () => {
       </div> */}
 
       <div className="text-2xl md:text-[40px] text-[#EAAA00] font-medium">
-        Hello{name}
-        <span className=''>{name}!</span>
+        Hello  {name}!
+       
       </div>
       <div className="pt-4 pb-32 text-white text-xl md:text-2xl max-w-[300px]">
         {searchQuery ? `You searched for: ${searchQuery}` : 'Selection of the best books just for you'}

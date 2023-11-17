@@ -39,7 +39,7 @@ const ForgotEmail = () => {
       // Successful password reset request
       // Redirect or display a success message
       console.log("Password reset request successful");
-      router.push("/success"); // Change "/success" to your success page
+      alert('Check your email')
     } catch (error) {
       console.error("Error:", error);
       setError(error.response.data.message);

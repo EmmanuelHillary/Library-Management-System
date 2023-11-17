@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 
 const ResetEmail = () => {
   const router = useRouter();
+  const { token } = router.query;
+  console.log(token)
   const [loginData, setLoginData] = useState({
     password: "",
     repeat_password: "",
@@ -27,8 +29,7 @@ const ResetEmail = () => {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/auth/reset-password`,
         {
-          email: "asadd@pvamu.com", 
-          token: "string",
+          token: token,
           newPassword: loginData.password,
         },
         {
@@ -37,7 +38,7 @@ const ResetEmail = () => {
           },
         }
       );
-      if (response.status === 200) {
+      if (response.status < 400) {
         alert('Password succesfully changed')
         console.log("Password reset successful");
         router.push("/authentication/Login");
@@ -47,7 +48,7 @@ const ResetEmail = () => {
       }
     } catch (error) {
       console.error("Error:", error);
-      setError("An error occurred. Please try again.");
+      setError(error.response.data.message);
     }
   };
 

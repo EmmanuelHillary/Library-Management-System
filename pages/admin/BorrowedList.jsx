@@ -9,6 +9,8 @@ import Footer from "@/components/footer/Footer";
 const BorrowedList = () => {
   const [borrowedList, setBorrowedList] = useState([]);
   const [originalUserList, setOriginalUserList] = useState([]);
+  const [filteredBorrowedList, setFilteredBorrowedList] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState("all");
 
   useEffect(() => {
     const fetchBookList = async () => {
@@ -18,12 +20,35 @@ const BorrowedList = () => {
         );
         setOriginalUserList(response.data);
         setBorrowedList(response.data);
+        setFilteredBorrowedList(response.data);
       } catch (error) {
         console.error("Error fetching book list:", error);
       }
     };
     fetchBookList();
   }, []);
+
+  const handleFilterChange = async (filter) => {
+    setSelectedFilter(filter);
+    try {
+      let queryParams = {};
+
+      if (filter === "overdue") {
+        queryParams.overdue = true;
+      } else if (filter === "status") {
+        queryParams.returned = true;
+      }
+
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/books/getborrowedbooks`,
+        { params: queryParams }
+      );
+
+      setFilteredBorrowedList(response.data);
+    } catch (error) {
+      console.error("Error fetching book list:", error);
+    }
+  };
 
   const generateReport = async () => {
     try {
@@ -50,6 +75,7 @@ const BorrowedList = () => {
     }
   };
 
+
   return (
     <AdminLayout title="Database">
       <div className="w-full mt-8 p-8">
@@ -58,6 +84,16 @@ const BorrowedList = () => {
             <h1 className="text-[16px] md:text-[32px] font-outfit">
               Borrowed List
             </h1>
+            <select
+              value={selectedFilter}
+              onChange={(e) => handleFilterChange(e.target.value)}
+              className="p-2 border border-gray-300 rounded-md ml-4"
+            >
+              <option value="all">All</option>
+              <option value="overdue">Overdue</option>
+              <option value="status">Status</option>
+            </select>
+
             <button
               className="bg-green-500 text-[12px] md:text-[16px] px-6  text-white py-2 font-outfit"
               onClick={generateReport}
@@ -80,7 +116,7 @@ const BorrowedList = () => {
               </tr>
             </thead>
             <tbody>
-              {borrowedList.map((user, index) => (
+              {filteredBorrowedList.map((user, index) => (
                 <tr
                   key={index}
                   className="border-b border-gray-200"
