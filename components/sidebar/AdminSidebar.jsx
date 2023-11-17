@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { RxDashboard } from "react-icons/rx";
+import { IoIosReturnLeft } from "react-icons/io";
 import { IoMdLogOut } from "react-icons/io";
 import { MdAttachMoney } from "react-icons/md";
 import { BsFillCalendarWeekFill } from "react-icons/bs";
@@ -145,6 +146,22 @@ const AdminSidebar = ({ isSidebarOpen }) => {
             <span className="hidden lg:inline">Add Book</span>
           </Link>
         </div>
+
+        <div>
+          <Link
+            href="/admin/ReturnBook"
+            className={`text-white hover.bg-[#971713] py-1 px-2 justify-center flex items-center w-full ${
+              isActive("/admin/ReturnBook") ? "border-l-8 border-white" : ""
+            }`}
+          >
+            <IoIosReturnLeft
+              style={{ width: "30px", height: "30px" }}
+              className="m-2"
+            />
+            <span className="hidden lg:inline">Return Book</span>
+          </Link>
+        </div>
+
         <div>
           <a
             onClick={handleLogout}

@@ -11,7 +11,7 @@ const OverdueList = () => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BASE_URL}/books/getborrowedbooks`
         );
-  
+
         setBookList(response.data.slice(0, 4)); // Slicing the array to display only the first 3 values
       } catch (error) {
         console.error("Error fetching book list:", error);
@@ -50,8 +50,12 @@ const OverdueList = () => {
                 <td className="p-2 text-center">{user.author}</td>
                 <td className="p-2 text-center">{user.borrowDate}</td>
                 <td className="p-2 text-center">{user.returnDate}</td>
-                <td className="p-2 text-center">
-                  {user.returned === true ? "Returned" : "Not returned"}
+                <td
+                  className={`p-2 text-center ${
+                    user.returned ? "text-green-500" : "text-red-500"
+                  }`}
+                >
+                  {user.returned ? "Returned" : "Not returned"}
                 </td>
               </tr>
             ))}

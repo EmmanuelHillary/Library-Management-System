@@ -64,7 +64,6 @@ const BorrowedList = () => {
             >
               Generate Report
             </button>
-
           </div>
           <table className="w-full font-outfit">
             <thead>
@@ -123,8 +122,12 @@ const BorrowedList = () => {
                   <td className="p-2">
                     {user.overdue === true ? "overdue" : "Not overdue"}
                   </td>
-                  <td className="p-2">
-                    {user.returned === true ? "Returned" : "Not returned"}
+                  <td
+                    className={`p-2 text-left ${
+                      user.returned ? "text-green-500" : "text-red-500"
+                    }`}
+                  >
+                    {user.returned ? "Returned" : "Not returned"}
                   </td>
                 </tr>
               ))}

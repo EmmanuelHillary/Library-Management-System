@@ -119,7 +119,7 @@ const LoginForm = () => {
               </label>
             </div>
             <div>
-              <Link className="text-[16px] md:text-[20px] text-[#971713] font-outfit" href="#">
+              <Link className="text-[16px] md:text-[20px] text-white font-outfit" href={"/authentication/ForgotPassword"}>
                 Forgot Password?
               </Link>
             </div>

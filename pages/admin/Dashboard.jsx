@@ -137,6 +137,7 @@ const Dashboard = () => {
       number: fine,
       icon: MdAttachMoney,
       title: "Total Book Fines",
+      prefix: "$",
     },
   ];
 
@@ -155,7 +156,7 @@ const Dashboard = () => {
               <DashboardCard
                 key={index}
                 title={card.title}
-                number={card.number}
+                number={card.prefix ? `${card.prefix}${card.number}` : card.number}
                 icon={card.icon}
               />
             );
