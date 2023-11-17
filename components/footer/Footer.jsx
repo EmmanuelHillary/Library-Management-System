@@ -35,7 +35,6 @@ const Footer = () => {
             </h1>
             <div className="text-[12px]">
               <p className=" py-2 navbar-text">Home</p>
-              <p className=" py-2 navbar-text">About us</p>
               <p className=" py-2 navbar-text">Books</p>
               <Link href="#"><p className=" py-2 navbar-text">Contact us</p></Link>
             </div>

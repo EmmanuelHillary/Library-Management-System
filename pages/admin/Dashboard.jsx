@@ -147,7 +147,7 @@ const Dashboard = () => {
           <h1 className="text-[32px] font-bold">
             Hello <span className="text-[#971713] font-outfit">{name}</span>
           </h1>
-          <h3 className="text-[20px] font-bold font-outfit">Date | Time</h3>
+
         </div>
         <div className="flex flex-col md:flex-row gap-[52px] w-full overflow-x-scroll">
           {cardData.map((card, index) => {

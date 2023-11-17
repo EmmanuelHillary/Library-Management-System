@@ -68,7 +68,7 @@ const Intro = () => {
         </div>
       </div>
 
-      <div className="flex items-center justify-center gap-8 mt-10 mx-auto w-full">
+      {/* <div className="flex items-center justify-center gap-8 mt-10 mx-auto w-full">
         <p className='text-white'>Filter by:</p>
         <button className="btn text-[#9B9B9B] bg-[#FFFFFF] py-2 px-6 cursor-pointer rounded-lg">
           Title
@@ -76,10 +76,10 @@ const Intro = () => {
         <button className="btn text-[#9B9B9B] bg-[#FFFFFF] py-2 px-6 cursor-pointer rounded-lg">
           Author
         </button>
-      </div>
+      </div> */}
 
       <div className="text-2xl md:text-[40px] text-[#EAAA00] font-medium">
-        Hello{" "}
+        Hello{name}
         <span className=''>{name}!</span>
       </div>
       <div className="pt-4 pb-32 text-white text-xl md:text-2xl max-w-[300px]">
