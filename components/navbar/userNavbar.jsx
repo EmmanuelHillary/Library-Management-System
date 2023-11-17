@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useSelector } from 'react-redux';
 
 const UserNavbar = ({ toggleSidebar, title }) => {
-    const { user } = useSelector((state) => state.auth);
+  const storedName = localStorage.getItem("username");
   return (
 <div className="flex justify-between items-center bg-white shadow-custom p-4">
       <div className="flex items-center">
@@ -19,19 +19,20 @@ const UserNavbar = ({ toggleSidebar, title }) => {
         </h2>
       </div>
       <div className="bg-white p-2 flex gap-4 items-start justify-space">
+      <Image
+          src={profile}
+          alt="Profile"
+          className="w-10 h-10 rounded-full mr-2"
+        />
         <div className="flex flex-col text-center">
           <span className="text-gray-700 font-medium capitalize text-left font-outfit">
-            {user}
+            {storedName}
           </span>
           <span className="text-sm text-gray-500 text-left font-outfit">
             User
           </span>
          </div>
-        <Image
-          src={profile}
-          alt="Profile"
-          className="w-10 h-10 rounded-full mr-2"
-        />
+        
       </div>
     </div>
   )
