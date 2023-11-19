@@ -17,10 +17,10 @@ const Footer = () => {
           <div className="flex items-start flex-col">
             <Image src={Logo} alt="Logo" className="md:w-[143px] md:h-[27px] w-[95px] h-[19px] bg-white"/>
 
-            <p className="font-mont text-[12px] text-white w-full sm:w-[350px] md:w-[408px] py-4">
+            <p className="font-outfit text-[12px] text-white w-full sm:w-[350px] md:w-[408px] py-4">
             Join our digital library community today and embark on your reading adventures in the virtual realm. Your next literary escape is just a click away. Happy reading!
             </p>
-            <p className="font-mont text-[12px] pt-4 md:pt-16 text-white">
+            <p className="font-outfit text-[12px] pt-4 md:pt-16 text-white">
               <span className="border-r-2 border-[#971713] pr-3 navbar-text">
                 Terms of use
               </span>{" "}
@@ -29,16 +29,16 @@ const Footer = () => {
           </div>
         </div>
         <div>
-          <div className="flex flex-col items-start text-white font-mont ">
-            <h1 className="text-[14px] text-white font-bold">
+          <div className="flex flex-col items-start text-white  ">
+            <h1 className="text-[14px] text-white font-bold font-outfit">
               Useful Links
             </h1>
             <div className="text-[12px]">
-              <p className=" py-2 navbar-text">Home</p>
-              <p className=" py-2 navbar-text">Books</p>
-              <Link href="#"><p className=" py-2 navbar-text">Contact us</p></Link>
+              <p className=" py-2 navbar-text font-outfit">Home</p>
+              <p className=" py-2 navbar-text font-outfit">Books</p>
+              <Link href="#"><p className=" py-2 navbar-text font-outfit">Contact us</p></Link>
             </div>
-            <div className="flex text-white text-[12px] items-center gap-4 py-2">
+            <div className="flex text-white text-[12px] items-center gap-4 py-2 font-outfit">
               Follow us{" "}
               <span>
                 <Image src={Instagram} alt="Logo" />
@@ -57,7 +57,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <div className="flex flex-col items-start text-white font-mont relative">
+          <div className="flex flex-col items-start text-white font-outfit relative">
             <h1 className="text-[14px] text-white font-bold">Contact Us</h1>
             <div className="text-[12px]">
               <div className=" py-2 flex items-center gap-4">
@@ -79,7 +79,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="w-full flex justify-center bg-[#971713] pb-12 relative">
-        <p className="font-mont text-[12px] text-white">
+        <p className="font-outfit text-[12px] text-white">
           All rights reserved.
         </p>
       </div>

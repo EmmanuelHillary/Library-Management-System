@@ -65,6 +65,17 @@ const TotalList = () => {
     }
   };
 
+  const handleDelete = async (bookId) => {
+    try {
+      await axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/books/${bookId}`);
+      setTotalList((prevList) =>
+        prevList.filter((book) => book.bookid !== bookId)
+      );
+    } catch (error) {
+      console.error("Error deleting book:", error);
+    }
+  };
+
   const generateReport = async () => {
     try {
       const response = await axios.get(
@@ -199,6 +210,7 @@ const TotalList = () => {
                   <td className="p-2">
                     <button
                       className="bg-red-500 hover:bg-red-800 text-[12px] md:text-[16px] px-6  text-white py-2 font-outfit"
+                      onClick={() => handleDelete(user.bookid)}
                     >
                       Delete
                     </button>
