@@ -20,7 +20,7 @@ const Login = () => {
                 <h1 className="text-[20px] mb-12 md:text-[60px] w-[500px] text-center font-bold relative block">
                   WHAT WILL YOU READ TODAY ?
                 </h1>
-                <p className="text-[35px] text-center w-[500px]">
+                <p className="text-[35px] text-center w-[500px] font-outfit">
                   Download your favourite books to read offline, no matter where
                   you are.
                 </p>

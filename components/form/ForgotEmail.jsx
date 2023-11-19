@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
+import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import Eye from "../../public/eye.png";
-import Image from "next/image";
-import { useLoginUserMutation } from "@/app/apiSlices/auth";
 import { useDispatch } from "react-redux";
-import { setToken, setUser } from "@/app/slices/authSlice";
 
 const ForgotEmail = () => {
   const router = useRouter();
@@ -36,8 +31,6 @@ const ForgotEmail = () => {
       );
 
       console.log(response);
-      // Successful password reset request
-      // Redirect or display a success message
       console.log("Password reset request successful");
       alert('Check your email')
     } catch (error) {

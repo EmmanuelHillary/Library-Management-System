@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
-import LoginForm from "@/components/form/LoginForm";
 import ForgotEmail from "@/components/form/ForgotEmail";
 
 const ForgotPassword = () => {
@@ -18,7 +17,7 @@ const ForgotPassword = () => {
           <div className="bg-[#971713] relative overflow-hidden pt-24">
             <div className=" text-white flex xl:flex-row flex-col items-center gap-8 justify-between px-0 md:px-20">
               <div>
-                <h1 className="text-[20px] mb-12 md:text-[60px] w-[500px] text-center font-bold relative block">
+                <h1 className="text-[20px] mb-12 md:text-[60px] w-[500px] font-outfit text-center font-bold relative block">
                   FORGOT YOUR PASSWORD?
                 </h1>
 

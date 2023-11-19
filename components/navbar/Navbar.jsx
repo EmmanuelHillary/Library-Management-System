@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="text-[#242A4A] flex gap-12 text-[16px] font-outfit items-center">
         <Link href="/">Home</Link>
         <Link href="/authentication/Admin" className="link text-[#971713] bg-[#FFECEC] py-2 px-4 hover:bg-transparent font-outfit">Admin</Link>
-        <Link href="/authentication/Login" className="link text-white bg-[#971713] py-2 px-4 hover:bg-transparent font-outfit">Login</Link>
+        <Link href="/authentication/Login" className="link text-white bg-[#971713] py-2 px-4 hover:bg-white hover:text-[#971713] font-outfit">Login</Link>
       </div>
     </div>
   );

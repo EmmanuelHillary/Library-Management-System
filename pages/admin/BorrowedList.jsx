@@ -35,8 +35,10 @@ const BorrowedList = () => {
 
       if (filter === "overdue") {
         queryParams.overdue = true;
-      } else if (filter === "status") {
+      } else if (filter === "returned") {
         queryParams.returned = true;
+      } else if(filter === "not returned"){
+        queryParams.returned = false;
       }
 
       const response = await axios.get(
@@ -87,11 +89,12 @@ const BorrowedList = () => {
             <select
               value={selectedFilter}
               onChange={(e) => handleFilterChange(e.target.value)}
-              className="p-2 border border-gray-300 rounded-md ml-4"
+              className="p-2 border border-gray-300 rounded-md ml-4 font-outfit"
             >
               <option value="all">All</option>
               <option value="overdue">Overdue</option>
-              <option value="status">Status</option>
+              <option value="returned">Returned</option>
+              <option value="not returned">Not Returned</option>
             </select>
 
             <button

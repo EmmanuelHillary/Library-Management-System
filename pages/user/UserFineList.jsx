@@ -6,11 +6,13 @@ import SearchBar from "@/components/inputs/SearchBar";
 import axios from "axios";
 import Footer from "@/components/footer/Footer";
 import { useSelector } from "react-redux";
+import DashboardCard from "@/components/cards/DashboardCard";
+import { MdAttachMoney } from "react-icons/md";
 
 const UserFineList = () => {
   const [userList, setUserList] = useState([]);
   const user = useSelector((state) => state.auth.user);
-
+  const [totalFine, setTotalFine] = useState(0);
 
   useEffect(() => {
     const fetchUserList = async () => {
@@ -20,6 +22,11 @@ const UserFineList = () => {
         );
         console.log(response);
         setUserList(response.data);
+        const total = response.data.reduce(
+          (accumulator, currentValue) => accumulator + currentValue.fineAmount,
+          0
+        );
+        setTotalFine(total);
       } catch (error) {
         console.error("Error fetching user list:", error);
       }
@@ -28,16 +35,25 @@ const UserFineList = () => {
     fetchUserList();
   }, [user]);
 
+  const prefix = "$";
+
   return (
     <UserLayout title="User Fine">
       <div className="w-full mt-8 p-8 overflow-x-scroll">
+        <div className="my-8">
+          <DashboardCard
+            title="Total Fine"
+            number={`${prefix}${totalFine}`}
+            icon={MdAttachMoney}
+          />
+        </div>
         <div className="overflow-y-scroll bg-white rounded-lg shadow-md ">
           <div className="flex justify-between px-2 md:px-12 py-4 items-center w-full">
             <h1 className="text-[16px] md:text-[32px] font-outfit">
               Fine List
             </h1>
           </div>
-          {!userList ? (
+          {!userList.length ? (
             <h1 className="text-center text-[16px] font-outfit mt-4 p-8">
               You have no fines.
             </h1>

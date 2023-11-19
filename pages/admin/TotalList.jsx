@@ -178,6 +178,7 @@ const TotalList = () => {
                 <th className="p-2 text-left">Department</th>
                 <th className="p-2 text-left">Author</th>
                 <th className="p-2 text-left">Total</th>
+                <th className="p-2 text-left"></th>
               </tr>
             </thead>
             <tbody>
@@ -195,6 +196,13 @@ const TotalList = () => {
                   <td className="p-2">{user.department}</td>
                   <td className="p-2">{user.author}</td>
                   <td className="p-2">{user.total}</td>
+                  <td className="p-2">
+                    <button
+                      className="bg-red-500 hover:bg-red-800 text-[12px] md:text-[16px] px-6  text-white py-2 font-outfit"
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
