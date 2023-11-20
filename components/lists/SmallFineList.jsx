@@ -27,7 +27,6 @@ const SmallFineList = ({ title, users }) => {
           <caption className="text-[20px] sm:text-[24px] font-semibold text-left p-4 mb-2 font-roboto">Fine List</caption>
           <thead>
             <tr className="bg-gray-100">
-              <th className="p-2">Book ID</th>
               <th className="p-2">Book Name</th>
               <th className="p-2">User Name</th>
               <th className="p-2">Amount</th>
@@ -37,7 +36,6 @@ const SmallFineList = ({ title, users }) => {
           <tbody>
             {fineList.map((book, index) => (
               <tr key={index} className="border-b border-gray-200">
-                <td className="p-2 text-center">{book._id}</td>
                 <td className="p-2 text-center">{book.book}</td>
                 <td className="p-2 text-center">{book.user}</td>
                 <td className="p-2 text-center">${book.fineAmount}</td>
@@ -47,7 +45,7 @@ const SmallFineList = ({ title, users }) => {
           </tbody>
           <tfoot>
             <tr className="bg-gray-100">
-              <td className="p-2" colSpan="3"></td>
+              <td className="p-2" colSpan="2"></td>
               <td className="p-2 text-right text-[#971713] text-[14px] font-bold">
                 {" "}
                 <Link href={"/admin/FineList"}>See All</Link>

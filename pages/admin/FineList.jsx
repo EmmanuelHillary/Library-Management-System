@@ -50,7 +50,6 @@ const FineList = () => {
             <thead>
               <tr className="bg-gray-100">
                 <th className="p-2 text-left">User</th>
-                <th className="p-2 text-left">Book ID</th>
                 <th className="p-2 text-left">Book Name</th>
                 <th className="p-2 text-left">Amount</th>
               </tr>
@@ -89,7 +88,6 @@ const FineList = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="p-2">{user._id}</td>
                   <td className="p-2">{user.book}</td>
                   <td className="p-2">${user.fineAmount}</td>
                   
