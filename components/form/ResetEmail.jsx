@@ -4,7 +4,10 @@ import { useRouter } from "next/router";
 
 const ResetEmail = () => {
   const router = useRouter();
-  const { token } = router.query;
+  const { query } = router;
+  
+  // Manually extract the token
+  const token = query.token || '';
   console.log(token)
   const [loginData, setLoginData] = useState({
     password: "",
